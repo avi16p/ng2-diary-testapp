@@ -1,0 +1,16 @@
+<h3 style="text-align:center">
+  New Entry
+</h3>
+
+<div style="margin:20px">
+	<label for="type">Select type</label>
+	<select class="form-control" [(ngModel)]="type">
+    	<option *ngFor="let t of eventTypes">{{t}}</option>
+	</select>
+</div>
+
+<div style="margin:20px"> 
+	<app-event-list-add-question [type]="type"></app-event-list-add-question>
+</div>	
+
+

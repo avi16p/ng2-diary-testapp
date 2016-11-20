@@ -1,0 +1,30 @@
+
+
+
+<h3 style="text-align:center">
+  Latest Diary Entries
+</h3>
+
+
+
+<div class="radio" style="margin-left:10px" *ngFor="let t of eventTypes">
+    <label>
+      <input type="radio"
+        name="type"
+        [(ngModel)]="type"
+        [value]="t"> 
+        {{t}}
+    </label>
+</div>
+
+
+
+<div style="border: 1px solid black;margin: 20px; word-wrap: break-word;">
+
+  <ul class="list-group">
+      <li *ngFor="let event of getActiveEvents()"  (click)="onSelectEvent(event)">
+      	<span style="color:blue">{{event.title}}</span> 
+        <br> Info: {{printEvent(event)}} </li>
+  </ul>
+
+</div>
