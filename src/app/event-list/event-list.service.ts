@@ -5,6 +5,10 @@ export class EventListService {
 
   private time: number;
 
+  private firstTime: boolean = true; 
+
+  private currentType: string = 'Home';
+
   constructor() {
 
   	this.events = [
@@ -47,5 +51,16 @@ export class EventListService {
   deleteEvent(event: Event) {
     this.events.splice(this.events.indexOf(event), 1);
   }
+
+
+  setCurrentType(type) {
+    this.currentType = type;
+  }
+
+  getCurrentType() {
+    return this.currentType;
+  }
+
+
 
 }

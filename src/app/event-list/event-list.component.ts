@@ -16,14 +16,16 @@ export class EventListComponent implements OnInit {
 
 
   eventTypes = ['Home', 'School', 'Playground'];
-  type: string = 'Home';
+  type: string;
 
   workingList: Event[];
 
   constructor(private els: EventListService) {}
 
   ngOnInit() {
+    this.type = this.els.getCurrentType();
     this.events = this.els.getEvents();
+    console.log("event0-list-comp: onInit type=" + this.type);
   }
 
   onSelectEvent(event: Event) {
@@ -40,6 +42,8 @@ export class EventListComponent implements OnInit {
 
 
   getActiveEvents() {
+
+    this.els.setCurrentType(this.type); // remember for next time
 
     this.events = this.els.getEvents(); // might have been updated by 'add' 
 

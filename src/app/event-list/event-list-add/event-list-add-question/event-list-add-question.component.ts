@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { QuestionService } from './question.service';
+import { EventListService } from "../../event-list.service";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class EventListAddQuestionComponent implements OnInit {
 
 
 
-  constructor(service: QuestionService) {
+  constructor(service: QuestionService, private els: EventListService) {
     this.service = service;
   }
 
@@ -32,6 +33,9 @@ export class EventListAddQuestionComponent implements OnInit {
   // temporal trick: on init we create all questions and hide them. otherwise crache as we attempt to access 
   // questions that were not set on init 
   getVisibilityWhenActive() {
+
+    if (this.type != '') this.els.setCurrentType(this.type);
+
     return (this.type=='' ? 'hidden' : 'visible');
   }
 

@@ -15,6 +15,8 @@ import { QuestionService } from "./event-list/event-list-add/event-list-add-ques
 import { DynamicFormComponent } from './event-list/event-list-add/event-list-add-question/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './event-list/event-list-add/event-list-add-question/dynamic-form-question.component';
 
+import {DatePickerModule} from 'ng2-datepicker';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { DynamicFormQuestionComponent } from './event-list/event-list-add/event-
     ReactiveFormsModule,
     HttpModule,
     routing,
+    DatePickerModule, 
     MaterialModule.forRoot()
   ],
   providers: [EventListService, QuestionControlService, QuestionService],

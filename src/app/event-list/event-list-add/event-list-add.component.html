@@ -2,6 +2,7 @@
   New Entry
 </h3>
 
+
 <div style="margin:20px">
 	<label for="type">Select type</label>
 	<select class="form-control" [(ngModel)]="type">
@@ -9,8 +10,17 @@
 	</select>
 </div>
 
+<!-- Keep it commented out since it breaks selectin of dynamic forms...
+
+<div style="margin:50px">
+    <div style="display:inline-block;"> Event Date</div>
+    <div style="display:inline-block;"> <datepicker-ionic singleSelect>Event date</datepicker-ionic> </div>
+</div>
+
+ -->
 <div style="margin:20px"> 
 	<app-event-list-add-question [type]="type"></app-event-list-add-question>
 </div>	
+
 
 
