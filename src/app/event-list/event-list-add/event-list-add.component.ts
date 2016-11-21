@@ -13,12 +13,18 @@ export class EventListAddComponent implements OnInit {
   eventTypes = ['Home', 'School', 'Playground'];
 
 
+		
   constructor() {}
 
 
   ngOnInit() {
 
   }
+
+  typeChanged(type: string) {
+  	console.log('typeChanged to ' + type);
+  }
+
 
  
 }

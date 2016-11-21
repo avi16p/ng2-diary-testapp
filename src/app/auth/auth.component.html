@@ -1,0 +1,19 @@
+<button *ngIf="!auth.authenticated()"
+        (click)="auth.login()"
+        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored login">Login
+</button>
+
+<div *ngIf="auth.authenticated() && auth.userProfile">
+
+  <!-- Contact Chip -->
+  <span class="mdl-chip mdl-chip--contact">
+    <img class="mdl-chip__contact" [src]="auth.userProfile.picture">
+    <span class="mdl-chip__text">{{auth.userProfile.name}}</span>
+  </span>
+  <button (click)="auth.logout()"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored logout">Logout
+  </button>
+
+</div>
+
+

@@ -23,6 +23,7 @@ export class EventListAddQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+        console.log('event-list-add-question: type=' + this.type);
   }
 
   getActiveQuestions(type: string) {

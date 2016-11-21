@@ -1,0 +1,11 @@
+.logout{
+  background-color: darkred;
+  color: white;
+  font-weight: 700;
+}
+
+.login{
+  background-color: darkgreen;
+  color: white;
+  font-weight: 700;
+}

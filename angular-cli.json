@@ -19,10 +19,10 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "../node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css"
+        "../node_modules/@angular2-mdl-ext/select/select.css",
+        "../node_modules/@angular2-mdl-ext/popover/popover.css"
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
