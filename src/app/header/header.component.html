@@ -4,18 +4,22 @@
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">
-        <img class="app-header-logo" src="../../images/android-logo.png" routerLink="">
+        <img class="app-header-logo" src="../../images/MyDiary.png" routerLink="">
       </span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="app-navigation mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/generic-link">GenericLink</a>
+
+      <nav class="app-navigation mdl-navigation">
+      
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/add">Add</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" routerLink="/show">Show</a>
       </nav>
 
       <div class="divider-vertical"></div>
 
-      <nav class="app-navigation mdl-navigation mdl-layout--large-screen-only">
+      <nav class="app-navigation mdl-navigation">
+
+
         <app-auth></app-auth>
       </nav>
     </div>
