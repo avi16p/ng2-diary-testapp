@@ -1,5 +1,6 @@
 
 
+<div style="margin-left:10px" >
 
 <h3 style="text-align:center">
   Latest Diary Entries
@@ -7,19 +8,16 @@
 
 
 
-<div class="radio" style="margin-left:10px" *ngFor="let t of eventTypes">
-    <label>
-      <input type="radio"
-        name="type"
-        [(ngModel)]="type"
-        [value]="t"> 
-        {{t}}
-    </label>
-</div>
+
+<label *ngFor="let t of eventTypes" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+  <input type="radio" id="t" class="mdl-radio__button" name="type" [(ngModel)]="type" [value]="t"> 
+  <span class="mdl-radio__label" style="margin-right:10px" >{{t}}</span>
+</label>
 
 
 
-<div style="border: 1px solid black;margin: 20px; word-wrap: break-word;">
+
+<div style="border: 1px solid black;; word-wrap: break-word;">
 
   <ul class="list-group">
       <li *ngFor="let event of getActiveEvents()"  (click)="onSelectEvent(event)">
@@ -28,3 +26,7 @@
   </ul>
 
 </div>
+
+
+</div>
+
