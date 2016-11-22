@@ -8,7 +8,7 @@ import { Component, OnInit} from '@angular/core';
 })
 export class EventListAddComponent implements OnInit {
 
-  type: string = '';
+  type: string = ''; // no default; user should select first
  
   eventTypes = ['Home', 'School', 'Playground'];
 

@@ -5,6 +5,8 @@
   <title>Client</title>
   <base href="/">
 
+
+
   <!-- JQuery -->
   <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -17,6 +19,25 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-green.min.css">
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+<!-- mdl-selectfield -->
+<!-- not used: I get error "selectfield.js:196Uncaught ReferenceError: componentHandler is not defined" with this package -->
+<!-- issue: can't load from local; added soft link cs src; l n -s ../node_modules .  -->
+<!-- select for MDL -->
+<!-- <link rel="stylesheet" href="./node_modules/mdl-selectfield/dist/mdl-selectfield.min.css">
+<script src="node_modules/mdl-selectfield/dist/mdl-selectfield.min.js"></script>
+ -->
+
+
+ <!--getmdl-select-->   
+ <!-- not clear if can be integrated with the dynamic forms. doesn't even use select -->
+  <!-- 
+   <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+   <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
+ -->
+
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">

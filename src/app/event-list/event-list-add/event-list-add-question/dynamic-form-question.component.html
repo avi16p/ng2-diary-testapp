@@ -4,30 +4,91 @@
 
   
   <div [ngSwitch]="question.controlType">
-  
 
+
+<!-- text -->
+
+  
+   <!-- old no MDL -->
+<!-- 
     <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
             [id]="question.key" [type]="question.type">
+   -->
   
-  
+
+  <!-- Textfield with MDL Floating Label -->
+<!-- 
+<div *ngSwitchCase="'textbox'">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3">
+    <label class="mdl-textfield__label" for="sample3">Text...</label>
+  </div>
+</div>
+ -->
+<!-- 
+
+  <div *ngSwitchCase="'textbox'"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" [type]="question.type" id="YYY" [formControlName]="question.key">
+    <label class="mdl-textfield__label" for="YYY">{{question.label}}</label>
+  </div>
+
+ -->
+
+
+  <div *ngSwitchCase="'textbox'"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
+    <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
+  </div>
+
+
+<!-- 
+
+  <div *ngSwitchCase="'textbox'"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" [type]="question.type" [id]="question.key">
+    <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
+  </div>
+ -->
+
+<!-- dropdown w/o MDL (not supported) -->
 
     <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
       <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
     </select>
   
 
+
+
+<!-- radio -->
+
     <div [id]="question.key" *ngSwitchCase="'radio'">
-      <div *ngFor="let opt of question.options">
-          <div *ngIf="opt.checked"> 
-              <input type="radio" name="question.label" [value]="opt.key" checked>{{opt.value}}
-          </div>
-          <div *ngIf="!opt.checked">
-              <input type="radio" name="question.label" [value]="opt.key">{{opt.value}}
-          </div>
-      </div>
+      <label *ngFor="let opt of question.options" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+        <div *ngIf="opt.checked"> 
+          <input type="radio" id="opt.key" class="mdl-radio__button" name="question.label" [value]="opt.key" checked> 
+          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
+        </div>
+        <div *ngIf="!opt.checked"> 
+          <input type="radio" id="opt.key" class="mdl-radio__button" name="question.label" [value]="opt.key"> 
+          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
+        </div>
+      </label>
     </div>
 
+
+<!-- Checkbox -->
+
+<div [id]="question.key" *ngSwitchCase="'checkbox'" >
+   <div *ngFor="let opt of question.options">
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" >
+        <input type="checkbox" id="opt.key"  class="mdl-checkbox__input" [value]="opt.key" checked>
+        <span class="mdl-checkbox__label">{{opt.value}}</span>
+      </label>
+    </div>
 </div>
+
+
+
+</div>
+
 
 
 

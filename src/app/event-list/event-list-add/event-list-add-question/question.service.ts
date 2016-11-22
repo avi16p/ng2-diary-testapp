@@ -3,6 +3,7 @@ import { DropdownQuestion } from './question-dropdown';
 import { QuestionBase }     from './question-base';
 import { TextboxQuestion }  from './question-textbox';
 import { RadioQuestion }  from './question-radio';
+import { CheckboxQuestion }  from './question-checkbox';
 @Injectable()
 export class QuestionService {
   // Todo: get from a remote source of question metadata
@@ -114,6 +115,19 @@ export class QuestionService {
         order: 3
       });
 
+
+    // Checkbox - one element
+    let todayQ: CheckboxQuestion = 
+       new CheckboxQuestion({
+        key: 'dateToday',
+        label: 'Today?',
+        options: [
+          {key: 'yes',  value: 'Yes', checked: true},
+        ],
+        order: 3
+      });
+
+
        
   	if (type == 'Home') return [titleQ, homeActivityQ];
 
@@ -121,7 +135,7 @@ export class QuestionService {
 
   	if (type == 'Playground') return [titleQ, gameQ ,hadFunQ2];
 
-  	return [titleQ, homeActivityQ, classQ, gotHomeworkQ, gameQ, hadFunQ2]; // default - return all
+    return []; 
 
   }
 

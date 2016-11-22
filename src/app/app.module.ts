@@ -39,16 +39,16 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventListService } from "./event-list/event-list.service";
 import { EventListAddComponent } from './event-list/event-list-add/event-list-add.component';
 import { routing } from './app.routing';
-import { EventListAddQuestionComponent } from './event-list/event-list-add/event-list-add-question/event-list-add-question.component';
 import { QuestionControlService } from "./event-list/event-list-add/event-list-add-question/question-control.service";
 import { QuestionService } from "./event-list/event-list-add/event-list-add-question/question.service";
-import { DynamicFormComponent } from './event-list/event-list-add/event-list-add-question/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './event-list/event-list-add/event-list-add-question/dynamic-form-question.component';
+import { DftestComponent } from './dftest/dftest.component';
+import { DynamicFormHomeComponent } from './event-list/event-list-add/dynamic-form-home.component';
+import { DynamicFormSchoolComponent } from './event-list/event-list-add/dynamic-form-school.component';
+import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dynamic-form-playground.component';
 
 //import {DatePickerModule} from 'ng2-datepicker';
 
-//import {FormlyModule, FormlyBootstrapModule} from 'ng2-formly';
-//import { EventListAddFormComponent } from './event-list/event-list-add/event-list-add-form/event-list-add-form.component';
 
 
 
@@ -66,10 +66,11 @@ import { DynamicFormQuestionComponent } from './event-list/event-list-add/event-
 
     EventListComponent,
     EventListAddComponent,
-    EventListAddQuestionComponent,
-    DynamicFormComponent,
     DynamicFormQuestionComponent,
-    //EventListAddFormComponent
+    DftestComponent,
+    DynamicFormHomeComponent,
+    DynamicFormSchoolComponent,
+    DynamicFormPlaygroundComponent,
 
   ],
   imports: [
@@ -88,8 +89,7 @@ import { DynamicFormQuestionComponent } from './event-list/event-list-add/event-
 
     routing,
     //DatePickerModule, 
-    //FormlyModule.forRoot(),
-    //FormlyBootstrapModule,
+   
 
 
   ],

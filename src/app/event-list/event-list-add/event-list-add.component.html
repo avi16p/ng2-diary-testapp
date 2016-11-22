@@ -1,34 +1,28 @@
-<h3 style="text-align:center">
-  New Entry
-</h3>
-
 
 <div style="margin:20px">
+
+	<h3 style="text-align:center">
+	  New Entry
+	</h3>
+
 	<label for="type">Select type</label>
 	<select class="form-control" [(ngModel)]="type" (change)="typeChanged($event.target.value)">
-    	<option *ngFor="let t of eventTypes">{{t}}</option>
+		<option *ngFor="let t of eventTypes">{{t}}</option>
 	</select>
+
+
+	<div *ngIf="type=='Home'">
+		<dynamic-form-home></dynamic-form-home>
+	</div>
+
+	<div *ngIf="type=='School'">
+		<dynamic-form-school></dynamic-form-school>
+	</div>
+
+	<div *ngIf="type=='Playground'">
+		<dynamic-form-playground></dynamic-form-playground>
+	</div>
+
+
 </div>
-
-<!-- Keep it commented out since it breaks selectin of dynamic forms...
-
-<div style="margin:50px">
-    <div style="display:inline-block;"> Event Date</div>
-    <div style="display:inline-block;"> <datepicker-ionic singleSelect>Event date</datepicker-ionic> </div>
-</div>
-
- -->
-
-<!-- with Formly -->
-<!-- <div style="margin:20px"> 
-	<app-event-list-add-form *ngIf="type!=''" [type]="type"></app-event-list-add-form>
-</div>	
-
-<hr> -->
-
-<!-- w/o formly -->
-
-<div style="margin:20px"> 
-	<app-event-list-add-question [type]="type"></app-event-list-add-question>
-</div>	
 
