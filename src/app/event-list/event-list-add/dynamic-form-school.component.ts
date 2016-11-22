@@ -1,8 +1,8 @@
 import { Component}  from '@angular/core';
 import { FormGroup }                 from '@angular/forms';
-import { QuestionBase }              from './event-list-add-question/question-base';
-import { QuestionControlService }    from './event-list-add-question/question-control.service';
-import { QuestionService } from './event-list-add-question/question.service';
+import { QuestionBase }              from '../../dynamic-form/question-base';
+import { QuestionControlService }    from '../../dynamic-form/question-control.service';
+import { QuestionService } from './question.service';
 
 
 import { Event } from '../../shared';
