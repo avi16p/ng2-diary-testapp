@@ -1,0 +1,94 @@
+<div [formGroup]="form">
+  <br>
+  <!-- <label [attr.for]="question.key">{{question.label}}</label> -->
+
+  
+  <div [ngSwitch]="question.controlType">
+
+
+<!-- text ** You can chose between the flavots by editing the switch value; to work it should be textbox-->
+
+  
+   <!-- without MDL -->
+
+    <div *ngSwitchCase="'textbox--disabled'">
+        <label [attr.for]="question.key">
+          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+         <input [formControlName]="question.key"
+                [id]="question.key" [type]="question.type">
+    </div>
+  
+
+
+  <!-- Textfield with MDL Floating Label -->
+
+  <div *ngSwitchCase="'textbox'"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
+    <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
+  </div>
+
+
+
+<!-- dropdown w/o MDL (select is not supported by MDL) -->
+    <div *ngSwitchCase="'dropdown'">
+      <label [attr.for]="question.key">
+          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+      <select [id]="question.key" [formControlName]="question.key">
+        <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+    </div>
+
+
+<!-- radio -->
+
+    <div [id]="question.key" *ngSwitchCase="'radio'">
+       <label [attr.for]="question.key">
+          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+      <label *ngFor="let opt of question.options" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+        <div *ngIf="opt.checked"> 
+          <input type="radio" id="opt.key" class="mdl-radio__button" [formControlName]="question.key" [value]="opt.key" checked> 
+          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
+        </div>
+        <div *ngIf="!opt.checked"> 
+          <input type="radio" id="opt.key" class="mdl-radio__button" [formControlName]="question.key" [value]="opt.key"> 
+          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
+        </div>
+      </label>
+    </div>
+
+
+<!-- checkbox -->
+
+<div [id]="question.key" *ngSwitchCase="'checkbox'" >
+    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="question.key" >
+      <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
+      <input type="checkbox" id="question.key" [formControlName]="question.key" class="mdl-checkbox__input">
+      <span class="mdl-checkbox__label">{{question.text}}</span>
+    </label>
+</div>
+
+
+<!-- multiCheckbox -->
+
+<div [id]="question.key" *ngSwitchCase="'multiCheckbox'" > 
+  <label [attr.for]="question.key">
+          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+    <div style="margin-left: 20px">
+      <div *ngFor="let opt of question.options" class="checkbox">
+          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+              <input [id]="opt.key" type="checkbox" [value]="opt.value" [formControlName]="question.key + '__' + opt.key"
+              class="mdl-checkbox__input">
+              <span class="mdl-checkbox__label">{{opt.text}}</span>
+              <span class="custom-control-indicator"></span>
+          </label>
+      </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
