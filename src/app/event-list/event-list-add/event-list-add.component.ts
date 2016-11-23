@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { EventListService } from "../event-list.service";
 
 
 @Component({
@@ -14,15 +15,17 @@ export class EventListAddComponent implements OnInit {
 
 
 		
-  constructor() {}
+  constructor(private els: EventListService) {}
 
 
   ngOnInit() {
-
+    this.type = this.els.getCurrentType();
   }
 
   typeChanged(type: string) {
   	console.log('typeChanged to ' + type);
+    this.els.setCurrentType(this.type); // remember for next time
+
   }
 
 

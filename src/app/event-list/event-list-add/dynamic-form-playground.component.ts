@@ -36,7 +36,7 @@ export class DynamicFormPlaygroundComponent {
 
   	// debug...
     console.log(this.form.value);
-    //console.log(this.form);
+    console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
       
