@@ -79,6 +79,33 @@ export class EventListComponent implements OnInit {
   }
 
 
+  printClasses(classes: {}) {
+
+     let str: string = "";
+     let first: boolean = true;
+
+     for (var key in classes){
+        var attrName = key;
+        var attrValue = classes[key];
+        if (attrValue) {
+
+          if  (first) {
+            first = false;
+            str = key;
+          } else {
+            str = str + ", " + key;
+          }
+
+        }
+     }
+
+
+
+     return str;
+
+  }
+
+
 
 
 

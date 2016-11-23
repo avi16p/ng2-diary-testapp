@@ -63,7 +63,7 @@
 		    <tr *ngFor="let event of getEvents('School')">
 		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
 		      <td> {{event.title}} </td>
-		      <td> {{event.classes}} </td>
+		      <td> {{printClasses(event.classes)}} </td>
 		      <td> {{event.gotHomework}} </td>
 		    </tr>
 
