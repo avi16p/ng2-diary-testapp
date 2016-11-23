@@ -9,7 +9,8 @@ export class Event {
 
 	homeActivity: string;
 
-	class: string;
+	class: string; // TODO: delete
+	classes: {} = {};
 
 	gotHomework: string;
 

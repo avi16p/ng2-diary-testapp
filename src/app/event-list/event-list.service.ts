@@ -7,7 +7,7 @@ export class EventListService {
 
   private firstTime: boolean = true; 
 
-  private currentType: string = 'Home';
+  private currentType: string = 'Home';  // TODO: move this to global configuration
 
   constructor() {
 
