@@ -32,13 +32,31 @@ export class EventListComponent implements OnInit {
      this.selectedEvent = event;
   }
 
-  onTypeSelected() {
+  onTypeSelected(type: string) {
     console.log("in onTypeSelected");
+    this.type = type;
   }
 
   onCleared() {
     this.selectedEvent = null;
   }
+
+
+
+
+  getEvents(type: string) {
+
+   
+    this.events = this.els.getEvents(); // might have been updated by 'add' 
+
+    // return latest 3 events of specific type
+    this.workingList = this.events.filter(event => {return event.type == type});
+    this.workingList.sort(function(a, b){ return  ((a.date > b.date) ? -1 : 1)});
+
+    return this.workingList.slice(0, this.numEventsToDisplay);
+  }
+
+
 
 
   getActiveEvents() {

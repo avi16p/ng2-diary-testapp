@@ -8,24 +8,106 @@
 
 
 
-
-<label *ngFor="let t of eventTypes" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-  <input type="radio" id="t" class="mdl-radio__button" name="type" [(ngModel)]="type" [value]="t"> 
-  <span class="mdl-radio__label" style="margin-right:10px" >{{t}}</span>
-</label>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="align:center">
+  <div class="mdl-tabs__tab-bar">
 
 
+    <a href="#Home" class="mdl-tabs__tab is-active"  (click)="onTypeSelected('Home')" >Home</a>
+    <a href="#School" class="mdl-tabs__tab" (click)="onTypeSelected('School')">School</a>
+    <a href="#Playground" class="mdl-tabs__tab" (click)="onTypeSelected('Playground')">Playground</a>
+  </div>
 
 
-<div style="border: 1px solid black;; word-wrap: break-word;">
+  <div class="mdl-tabs__panel is-active" id="Home">
 
-  <ul class="list-group">
-      <li *ngFor="let event of getActiveEvents()"  (click)="onSelectEvent(event)">
-      	<span style="color:blue">{{event.title}}</span> 
-        <br> Info: {{printEvent(event)}} </li>
-  </ul>
+		    
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
+		      <th>Title</th>
+		      <th>Activity</th>
+		    </tr>
+		  </thead>
 
+		  <tbody>
+
+		    <tr *ngFor="let event of getEvents('Home')">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		      <td> {{event.title}} </td>
+		      <td> {{event.homeActivity}} </td>
+		    </tr>
+
+		  </tbody>
+
+		</table>
+
+ 
+  </div>
+  
+  <div class="mdl-tabs__panel" id="School">
+    
+ 		    
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
+		      <th>Title</th>
+		      <th>Classes</th>
+		      <th>Got Homework?</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+
+		    <tr *ngFor="let event of getEvents('School')">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		      <td> {{event.title}} </td>
+		      <td> {{event.classes}} </td>
+		      <td> {{event.gotHomework}} </td>
+		    </tr>
+
+		  </tbody>
+
+		</table>
+
+ 
+
+  </div>
+  <div class="mdl-tabs__panel" id="Playground">
+    
+  		    
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
+		      <th>Title</th>
+		      <th>Play</th>
+		      <th>Had fun?</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+
+		    <tr *ngFor="let event of getEvents('Playground')">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		      <td> {{event.title}} </td>
+		      <td> {{event.game}} </td>
+		      <td> {{event.hadFun}} </td>
+		    </tr>
+
+		  </tbody>
+
+		</table>
+
+ 
+
+  </div>
 </div>
+
+
+
+
 
 
 </div>
