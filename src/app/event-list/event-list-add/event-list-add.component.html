@@ -5,10 +5,16 @@
 	  New Entry
 	</h3>
 
-	<label for="type">Select type</label>
+	<label for="type"> <span class="mdl-label" style="font-weight: bold">Select type</span> </label>
 	<select class="form-control" [(ngModel)]="type" (change)="typeChanged($event.target.value)">
 		<option *ngFor="let t of eventTypes">{{t}}</option>
 	</select>
+
+
+
+	<div *ngIf="type!=''">
+		<h3 style="text-align:center"> New {{type}} Diary Entry </h3>
+	</div>
 
 
 	<div *ngIf="type=='Home'">

@@ -12,19 +12,7 @@ import { EventListService } from "../event-list.service";
 @Component({
   // moduleId: module.id,
   selector: 'dynamic-form-home',
-
-  template: `
-		<div>
-		  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-		    <div *ngFor="let question of questions" class="form-row">
-		      <df-question [question]="question" [form]="form"></df-question>
-		    </div>
-		    <div class="form-row" style="margin-top:10px" >
-		      <button type="submit" [disabled]="!form.valid">Save</button>
-		    </div>
-		  </form>
-		</div>
-  `,
+  templateUrl: '../../dynamic-form/form.template.html',
 })
 
 export class DynamicFormHomeComponent {
