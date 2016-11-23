@@ -16,6 +16,7 @@ export class DftestComponent implements OnInit {
 		this.myForm = new FormGroup(
 
 				{
+					checkbox1: new FormControl(true),
 					title: new FormControl(),
 					title2: new FormControl(),
 					//username: new FormControl('Max', Validators.required), // def, validator
@@ -26,10 +27,11 @@ export class DftestComponent implements OnInit {
 			);
 
 
+
 	}    
 
 	onSubmit() {
-		console.log(this.myForm);
+		console.log(this.myForm.value);
 		console.log("TITLE=", this.myForm.value.title);
 		console.log("TITLE2=", this.myForm.value.title2);
 	}
