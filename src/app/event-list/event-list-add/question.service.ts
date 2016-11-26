@@ -64,6 +64,26 @@ export class QuestionService {
 
 
 
+    // let classQcheckBox: MultiCheckboxQuestion = 
+    //   new MultiCheckboxQuestion({
+    //     key: 'class',
+    //     label: 'Classes today',
+    //     options: [
+    //       {key: 'math',  text: 'Math', value: false},
+    //       {key: 'hebrew',  text: 'Hebrew', value: false},
+    //       {key: 'geography',  text: 'Geography', value: false},
+    //       {key: 'gym',  text: 'Gym', value: false},
+    //       {key: 'social',  text: 'Social', value: false},
+    //       {key: 'biology',  text: 'Biology', value: false},
+    //       {key: 'science',  text: 'Science', value: false},
+    //       {key: 'other',  text: 'Other', value: false},
+    //     ],
+    //     order: 2
+    //   });    
+
+
+
+
     let classQcheckBox: MultiCheckboxQuestion = 
       new MultiCheckboxQuestion({
         key: 'class',
@@ -76,7 +96,7 @@ export class QuestionService {
           {key: 'social',  text: 'Social', value: false},
           {key: 'biology',  text: 'Biology', value: false},
           {key: 'science',  text: 'Science', value: false},
-          {key: 'other',  text: 'Other', value: false},
+          {key: 'other',  text: 'Other', value: false, altInput: true},
         ],
         order: 2
       });    

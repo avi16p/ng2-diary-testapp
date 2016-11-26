@@ -36,7 +36,7 @@ export class DynamicFormSchoolComponent {
 
   	// debug...
     //console.log(this.form.value);
-    //console.log(this.form);
+    console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
       
@@ -50,6 +50,11 @@ export class DynamicFormSchoolComponent {
        science: this.form.value.class__science,
        other: this.form.value.class__other,
      };
+
+     // insert altInput as if it is yet another class option
+     if (this.form.value.class__other__altInput != "") {
+       newEvent.classes[this.form.value.class__other__altInput] = true;
+     } 
 
 
     newEvent.gotHomework = this.form.value.gotHomework;

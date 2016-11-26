@@ -18,8 +18,6 @@ export class QuestionControlService {
 
 		    this.setupFormControl(question);
 
-		    // group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-		    //                                           : new FormControl(question.value || '');
     });
 
     return new FormGroup(this.group);
@@ -36,7 +34,12 @@ export class QuestionControlService {
 
     	let q: any = question;
     	 q.options.forEach(opt => {
- 		 	  	 		this.group[q.key + '__' + opt.key] = new FormControl(opt.value || false);
+   		 	  	 		this.group[q.key + '__' + opt.key] = new FormControl(opt.value || false);
+
+                if (opt.altInput) {
+                  this.group[q.key + '__' + opt.key + '__altInput' ] = new FormControl("");
+                }
+
     	 			}
     	 		);
 

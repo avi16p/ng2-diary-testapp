@@ -86,6 +86,23 @@
 </div>
 
 
+<!-- Other of multiCheckbox -->
+
+<div  *ngSwitchCase="'multiCheckbox'" > 
+      <div *ngFor="let opt of question.options">
+         <div *ngIf="opt.altInput" style="margin-left: 60px">
+          
+             <input [hidden]="! form.controls[question.key + '__' + opt.key].value"
+               [formControlName]="question.key + '__' + opt.key + '__altInput'"
+                    [id]="question.key + '__' + opt.key + '__altInput'" >
+
+        </div>
+    </div>
+</div>
+
+
+
+
 
 </div>
 

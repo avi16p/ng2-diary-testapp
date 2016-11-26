@@ -44,7 +44,7 @@ export class EventListComponent implements OnInit {
      for (var key in classes){
         var attrName = key;
         var attrValue = classes[key];
-        if (attrValue) {
+        if (attrValue && (key != 'other')) {
 
           if  (first) {
             first = false;

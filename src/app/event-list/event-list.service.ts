@@ -25,8 +25,8 @@ import { appDefaults } from "../config";
         this.dbItems[type] = this.af.database.list(this.getDbPath(type)); 
 
         this.dbItemsForDisplay[type] = this.af.database.list(this.getDbPath(type), {query: {
-              orderByChild: 'title',
-              limitToFirst: appDefaults['numEntriesToDisplay'],
+              orderByChild: 'key',
+              limitToLast: appDefaults['numEntriesToDisplay'],
           }} );
 
       }
