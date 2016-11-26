@@ -1,13 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Event, IEvent } from '../shared';
 import { EventListService } from "./event-list.service";
-
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
-
-
-import { appDefaults } from "../config";
-
-import { ReversePipe } from '../shared/reverse.pipe';
 
 
 
@@ -19,37 +11,11 @@ import { ReversePipe } from '../shared/reverse.pipe';
 export class EventListComponent implements OnInit {
   
 
-  dbItems: FirebaseListObservable<IEvent[]>[] = [];
 
-
-  selectedEvent: Event; // For future feature of user selects an event
-
-
-  eventTypes: string [];
   type: string;
 
 
-
-
-
-  constructor(private els: EventListService, private af: AngularFire) {
-
-    this.eventTypes = this.els.getEventTypes();
-
-
-    this.eventTypes.forEach(type => 
-      
-      { this.dbItems[type] = this.af.database.list(this.els.getDbPath(type), {query: {
-              orderByChild: 'title',
-              limitToFirst: appDefaults['numEntriesToDisplay'],
-          }} ); }
-
-      );
-
-  }
-
-
-
+  constructor(private els: EventListService) { }
 
 
   ngOnInit() {
@@ -58,9 +24,6 @@ export class EventListComponent implements OnInit {
    
   }
 
-  onSelectEvent(event: Event) {
-     this.selectedEvent = event;
-  }
 
   onTypeSelected(type: string) {
     console.log("in onTypeSelected");
@@ -68,7 +31,6 @@ export class EventListComponent implements OnInit {
   }
 
   onCleared() {
-    this.selectedEvent = null;
   }
 
 

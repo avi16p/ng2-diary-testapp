@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import { Event } from "../shared";
+import { Event, IEvent } from "../shared";
 
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
 
@@ -12,14 +12,24 @@ import { appDefaults } from "../config";
   private currentType: string;
 
 
-  dbItems: FirebaseListObservable<any[]>[] = [];
+  dbItems: FirebaseListObservable<IEvent[]>[] = [];
+  dbItemsForDisplay: FirebaseListObservable<IEvent[]>[] = [];  // used for what we actually display
 
 
 
   constructor(private af: AngularFire) {
   
     this.getEventTypes().forEach(type => 
-      { this.dbItems[type] = this.af.database.list(this.getDbPath(type)); }
+      { 
+
+        this.dbItems[type] = this.af.database.list(this.getDbPath(type)); 
+
+        this.dbItemsForDisplay[type] = this.af.database.list(this.getDbPath(type), {query: {
+              orderByChild: 'title',
+              limitToFirst: appDefaults['numEntriesToDisplay'],
+          }} );
+
+      }
       );
 
      this.currentType = appDefaults['startType'];
@@ -45,13 +55,9 @@ import { appDefaults } from "../config";
     event.dateStr = event.date.toString();
     event.dateNum = event.date.getMilliseconds();
 
-
     this.dbItems[event.type].push(event);
 
   }
-
-
-
 
 
   setCurrentType(type) {

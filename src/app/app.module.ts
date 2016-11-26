@@ -46,7 +46,6 @@ import { DftestComponent } from './dftest/dftest.component';
 import { DynamicFormHomeComponent } from './event-list/event-list-add/dynamic-form-home.component';
 import { DynamicFormSchoolComponent } from './event-list/event-list-add/dynamic-form-school.component';
 import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dynamic-form-playground.component';
-import { ReversePipe } from './shared/reverse.pipe';
 
 //import {DatePickerModule} from 'ng2-datepicker';
 
@@ -72,7 +71,6 @@ import { ReversePipe } from './shared/reverse.pipe';
     DynamicFormHomeComponent,
     DynamicFormSchoolComponent,
     DynamicFormPlaygroundComponent,
-    ReversePipe,
 
   ],
   imports: [
