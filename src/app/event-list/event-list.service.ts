@@ -1,138 +1,57 @@
+import { Injectable} from '@angular/core';
 import { Event } from "../shared";
 
-export class EventListService {
-  private events: Event[] = [];
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
 
-  private time: number;
 
-  private firstTime: boolean = true; 
+import { appDefaults } from "../config";
 
-  private currentType: string = 'Home';  // TODO: move this to global configuration
+@Injectable() export class EventListService {
 
-  constructor() {
 
-  	this.events = [
-  		new Event("watch tv", "Home"),
-      new Event("hide & seek", "Playground"),      
-      new Event("aa", "Home"),
-      new Event("bb", "Home"),
-      new Event("cc", "Home"),
-      new Event("play1", "Playground"),
-      new Event("play2", "Playground"),
-      new Event("play3", "Playground"),
-      new Event("sc1", "School"),
-      new Event("dd", "Home"),
-      new Event("ee", "Home"),
+  private currentType: string;
 
-  	];
+
+  dbItems: FirebaseListObservable<any[]>[] = [];
+
+
+
+  constructor(private af: AngularFire) {
   
-    let e: Event;
+    this.getEventTypes().forEach(type => 
+      { this.dbItems[type] = this.af.database.list(this.getDbPath(type)); }
+      );
 
-    e = new Event("watch tv", "Home");
-    e.homeActivity = "TV";
-    this.events.push(e);  
+     this.currentType = appDefaults['startType'];
 
-
-    e = new Event("play for hours", "Home");
-    e.homeActivity = "Smartphone";
-    this.events.push(e);  
-
-
-    e = new Event("reading new book", "Home");
-    e.homeActivity = "Book reading";
-    this.events.push(e);  
-
-
-    e = new Event("just a school day", "School");
-    e.classes = {
-      math: true,
-      gym: true,
-    };
-    e.gotHomework = "Yes";
-    this.events.push(e);  
-
-
-
-    e = new Event("Sport day at school", "School");
-    e.classes = {
-      math: false,
-      gym: true,
-    };
-    e.gotHomework = "Yes but won't do";
-    this.events.push(e);  
-
-
-
-    e = new Event("Teacher was sick!", "School");
-    e.classes = {
-      math: false,
-      gym: false,
-    };
-    e.gotHomework = "No";
-    this.events.push(e);  
-
-
-
-    e = new Event("afternoon with Dana", "Playground");
-    e.game = "Swings";
-    e.hadFun = "Kind of";
-    this.events.push(e);  
-
-
-    e = new Event("This was real fun", "Playground");
-    e.game = "Catches";
-    e.hadFun = "Yes";
-    this.events.push(e);  
-
-
-
-    e = new Event("afternoon with Dana", "Playground");
-    e.game = "Swings";
-    e.hadFun = "Kind of";
-    this.events.push(e);  
-
-
-    e = new Event("many friends came today", "Playground");
-    e.game = "Hide & Seek";
-    e.hadFun = "Yes";
-    this.events.push(e);  
-
-
-    e = new Event("Was alone", "Playground");
-    e.game = "Other";
-    e.hadFun = "No";
-    this.events.push(e);  
-
-
-
-
-
-
-    this.time = 1000000000000;
-    this.events.forEach(event => {event.date = new Date(this.time); this.time += 20000000000});
 
   }
 
 
-  getEvents() {
-    return this.events;
+  getEventTypes() {
+    return ['Home', 'School', 'Playground'];
   }
 
-  addEvents(events: Event[]) {
-    Array.prototype.push.apply(this.events, events);
+  getDbPath(type: string) {
+
+    let user = 'User1'  // TODO: use real usr d after adding auth
+    return (user + '/Events/' + type);
+
   }
-  
+
+
   addEvent(event: Event) {
-    this.events.push(event);
+
+    event.dateStr = event.date.toString();
+    event.dateNum = event.date.getMilliseconds();
+
+
+    this.dbItems[event.type].push(event);
+
   }
-  
-  editEvent(oldEvent: Event, newEvent: Event) {
-    this.events[this.events.indexOf(oldEvent)] = newEvent;
-  }
-  
-  deleteEvent(event: Event) {
-    this.events.splice(this.events.indexOf(event), 1);
-  }
+
+
+
 
 
   setCurrentType(type) {

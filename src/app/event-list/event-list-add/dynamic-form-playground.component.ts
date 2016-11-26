@@ -35,8 +35,8 @@ export class DynamicFormPlaygroundComponent {
   onSubmit() {
 
   	// debug...
-    console.log(this.form.value);
-    console.log(this.form);
+    //console.log(this.form.value);
+    //console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
       
@@ -47,7 +47,7 @@ export class DynamicFormPlaygroundComponent {
 
     newEvent.date = new Date();
 
-    console.log("try:" + JSON.stringify(newEvent)); // debug
+    //console.log("try:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 

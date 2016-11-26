@@ -15,13 +15,15 @@ export const authConfig: AuthConfiguration = {
 // DataBase configuration
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyA_vvhlKb4AbUKdOAqoGTbnWiSlfWZmxTI",
-  authDomain: "generic-df4a9.firebaseapp.com",
-  databaseURL: "https://generic-df4a9.firebaseio.com",
-  storageBucket: "",
-  messagingSenderId: "105359473786"
+
+
 };
 
+
+export const appDefaults = {
+	startType: 'Home',
+	numEntriesToDisplay: 5,
+};
 
 
 // Additional configuration here

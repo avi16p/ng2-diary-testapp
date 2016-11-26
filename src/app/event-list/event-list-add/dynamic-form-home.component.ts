@@ -35,7 +35,7 @@ export class DynamicFormHomeComponent {
   onSubmit() {
 
   	// debug...
-    console.log("form.value=", this.form.value);
+    //console.log("form.value=", this.form.value);
     //console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
@@ -45,7 +45,7 @@ export class DynamicFormHomeComponent {
     
     newEvent.date = new Date();
 
-    console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
+    //console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 

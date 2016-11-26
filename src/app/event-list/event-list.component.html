@@ -2,6 +2,12 @@
 
 <div style="margin-left:10px" >
 
+
+<div *ngFor="let e of [1, 2, 3] | reverse">
+{{e}}
+</div>
+
+
 <h3 style="text-align:center">
   Latest Diary Entries
 </h3>
@@ -32,8 +38,8 @@
 
 		  <tbody>
 
-		    <tr *ngFor="let event of getEvents('Home')">
-		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		    <tr *ngFor="let event of dbItems['Home'] |  async">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
 		      <td> {{event.title}} </td>
 		      <td> {{event.homeActivity}} </td>
 		    </tr>
@@ -60,8 +66,8 @@
 
 		  <tbody>
 
-		    <tr *ngFor="let event of getEvents('School')">
-		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		    <tr *ngFor="let event of dbItems['School'] | async ">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
 		      <td> {{event.title}} </td>
 		      <td> {{printClasses(event.classes)}} </td>
 		      <td> {{event.gotHomework}} </td>
@@ -89,8 +95,8 @@
 
 		  <tbody>
 
-		    <tr *ngFor="let event of getEvents('Playground')">
-		      <td class="mdl-data-table__cell--non-numeric">{{event.date}}</td>
+		    <tr *ngFor="let event of dbItems['Playground'] | async">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
 		      <td> {{event.title}} </td>
 		      <td> {{event.game}} </td>
 		      <td> {{event.hadFun}} </td>

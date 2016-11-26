@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Event } from '../shared';
+import { Component, OnInit} from '@angular/core';
+import { Event, IEvent } from '../shared';
 import { EventListService } from "./event-list.service";
+
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+
+
+import { appDefaults } from "../config";
+
+import { ReversePipe } from '../shared/reverse.pipe';
+
 
 
 @Component({
@@ -10,22 +18,44 @@ import { EventListService } from "./event-list.service";
 })
 export class EventListComponent implements OnInit {
   
-  events: Event[] = [];
-  selectedEvent: Event;
-  numEventsToDisplay: number = 3;
+
+  dbItems: FirebaseListObservable<IEvent[]>[] = [];
 
 
-  eventTypes = ['Home', 'School', 'Playground'];
+  selectedEvent: Event; // For future feature of user selects an event
+
+
+  eventTypes: string [];
   type: string;
 
-  workingList: Event[];
 
-  constructor(private els: EventListService) {}
+
+
+
+  constructor(private els: EventListService, private af: AngularFire) {
+
+    this.eventTypes = this.els.getEventTypes();
+
+
+    this.eventTypes.forEach(type => 
+      
+      { this.dbItems[type] = this.af.database.list(this.els.getDbPath(type), {query: {
+              orderByChild: 'title',
+              limitToFirst: appDefaults['numEntriesToDisplay'],
+          }} ); }
+
+      );
+
+  }
+
+
+
+
 
   ngOnInit() {
+   
     this.type = this.els.getCurrentType();
-    this.events = this.els.getEvents();
-    console.log("event0-list-comp: onInit type=" + this.type);
+   
   }
 
   onSelectEvent(event: Event) {
@@ -42,41 +72,6 @@ export class EventListComponent implements OnInit {
   }
 
 
-
-
-  getEvents(type: string) {
-
-   
-    this.events = this.els.getEvents(); // might have been updated by 'add' 
-
-    // return latest 3 events of specific type
-    this.workingList = this.events.filter(event => {return event.type == type});
-    this.workingList.sort(function(a, b){ return  ((a.date > b.date) ? -1 : 1)});
-
-    return this.workingList.slice(0, this.numEventsToDisplay);
-  }
-
-
-
-
-  getActiveEvents() {
-
-    this.els.setCurrentType(this.type); // remember for next time
-
-    this.events = this.els.getEvents(); // might have been updated by 'add' 
-
-    // return latest 3 events of specific type
-    this.workingList = this.events.filter(event => {return event.type == this.type});
-    this.workingList.sort(function(a, b){ return  ((a.date > b.date) ? -1 : 1)});
-
-    return this.workingList.slice(0, this.numEventsToDisplay);
-  }
-
-
-
-  printEvent(event: Event) {
-    return JSON.stringify(event);
-  }
 
 
   printClasses(classes: {}) {

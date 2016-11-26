@@ -35,13 +35,11 @@ export class DynamicFormSchoolComponent {
   onSubmit() {
 
   	// debug...
-    console.log(this.form.value);
-    console.log(this.form);
+    //console.log(this.form.value);
+    //console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
       
-    newEvent.class = this.form.value.class;
-
      newEvent.classes = {
        math: this.form.value.class__math,
        hebrew: this.form.value.class__hebrew,
@@ -58,7 +56,7 @@ export class DynamicFormSchoolComponent {
     
     newEvent.date = new Date();
 
-    console.log("try:" + JSON.stringify(newEvent)); // debug
+    //console.log("try:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 

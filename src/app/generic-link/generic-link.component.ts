@@ -35,7 +35,7 @@ export class GenericLinkComponent implements OnInit {
   dbItems: FirebaseListObservable<any[]>;
 
   constructor(af: AngularFire) {
-    this.dbItems = af.database.list('/list');
+    this.dbItems = af.database.list('/tasks'); // TODO
   }
 
   ngOnInit() {

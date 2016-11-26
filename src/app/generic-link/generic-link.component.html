@@ -48,6 +48,16 @@
   </div>
 </div>
 
+<hr>
+<!-- TODO -->
+<h3> Firebase DB test </h3>
+<ul>
+  <li class="text" *ngFor="let item of dbItems | async">
+    {{item.$value}}
+  </li>
+</ul>
+<hr>
+
 <div class="mdl-grid">
   <button #editUserButton mdl-button mdl-button-type="raised" mdl-colored="primary"
           mdl-ripple (click)="editUserDialog.show()">Edit User Dialog
