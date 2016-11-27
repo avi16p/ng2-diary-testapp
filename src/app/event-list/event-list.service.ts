@@ -73,8 +73,6 @@ import { appDefaults } from "../config";
 
   getDbPath(type: string) {
 
-    //let user = 'User1'  // TODO: use real usr d after adding auth
-    //let user = this.authService.getUserName();
     return (this.userName + '/Events/' + type);
 
   }
@@ -83,7 +81,6 @@ import { appDefaults } from "../config";
   addEvent(event: Event) {
 
     event.dateStr = event.date.toString();
-    event.dateNum = event.date.getMilliseconds();
 
     this.dbItems[event.type].push(event);
 

@@ -9,9 +9,6 @@ import { MultiCheckboxQuestion }  from '../../dynamic-form/question-multiCheckbo
 @Injectable()
 export class QuestionService {
   // Todo: get from a remote source of question metadata
-  // Todo: make asynchronous
-
-
 
   getQuestions(type: string) {
 

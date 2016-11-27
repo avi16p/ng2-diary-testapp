@@ -19,11 +19,9 @@ export class Event implements IEvent {
 
 	date: Date;
 	dateStr: string;
-	dateNum: number;
 
 	homeActivity: string;
 
-	//class: string; // TODO: delete
 	classes: {} = {};
 
 	gotHomework: string;
