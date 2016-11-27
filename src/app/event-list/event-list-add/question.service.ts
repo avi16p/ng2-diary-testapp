@@ -11,15 +11,23 @@ import { formConfig } from '../../form_config';
 export class QuestionService {
 
 
-  // return the value of a question key tobe displayed  
+  keyValueMap = {};
+
+  // return the value of a question key to be displayed  (Radio, Checkbox, MultiCheckbox)
   getKeyValue(key: string) {
-    return key; // TODO
+
+    if (this.keyValueMap[key]) {
+      return this.keyValueMap[key];
+    } else {
+      return key;
+    }
+
   }
 
 
   getQuestion(q: {}) {
 
-    console.log("q=", JSON.stringify(q));  
+    //console.log("q=", JSON.stringify(q));  
 
     let newQ: QuestionBase<any>;
 
@@ -31,6 +39,9 @@ export class QuestionService {
 
       case 'Radio':
           newQ = new RadioQuestion(q['cfg']);
+          for (var opt in q['cfg']['options']) { 
+            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
+          }
         break; 
 
       case 'Checkbox':
@@ -39,13 +50,21 @@ export class QuestionService {
 
       case 'MultiCheckbox':
           newQ = new MultiCheckboxQuestion(q['cfg']);
+          for (var opt in q['cfg']['options']) { 
+            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['text']; 
+          }
         break; 
 
       case 'Dropdown':
           newQ = new DropdownQuestion(q['cfg']);
+          for (var opt in q['cfg']['options']) { 
+            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
+          }
         break; 
 
     }
+
+    
 
     return newQ;
 

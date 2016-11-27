@@ -1,5 +1,4 @@
 
-
  
 
 export interface IEvent {
@@ -22,14 +21,13 @@ export class Event implements IEvent {
 
 	homeActivity: string;
 
-	classes: {} = {};
+	classesStr: string;
 
 	gotHomework: string;
 
 	game: string;
 
 	hadFun: string;
-
 
 	constructor(title: string, 
 				type: string,

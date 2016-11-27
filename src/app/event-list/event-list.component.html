@@ -64,7 +64,7 @@
 		    <tr *ngFor="let event of els.dbItemsForDisplay['School'] | async ">
 		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
 		      <td> {{event.title}} </td>
-		      <td> {{printClasses(event.classes)}} </td>
+		      <td> {{event.classesStr}} </td>
 		      <td> {{event.gotHomework}} </td>
 		    </tr>
 

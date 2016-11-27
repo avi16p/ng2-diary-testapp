@@ -40,7 +40,7 @@ export class DynamicFormHomeComponent {
 
     let newEvent = new Event(this.form.value.title, this.type);
       
-    newEvent.homeActivity = this.form.value.homeActivity;
+    newEvent.homeActivity =  this.qs.getKeyValue(this.form.value.homeActivity);
 
 
     if (! this.form.value.currentTime) {
@@ -50,7 +50,7 @@ export class DynamicFormHomeComponent {
     }
         
 
-    console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
+    //console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 

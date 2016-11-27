@@ -8,7 +8,6 @@ import { QuestionService } from './question.service';
 import { Event } from '../../shared';
 import { EventListService } from "../event-list.service";
 
-import * as moment from 'moment';
 
 @Component({
   // moduleId: module.id,
@@ -20,8 +19,6 @@ export class DynamicFormSchoolComponent {
   questions: QuestionBase<any>[] = [];
   type: string = "School"
   form: FormGroup;
-
-  gdate: moment.Moment;
 
   
   constructor(private qs: QuestionService, private qcs: QuestionControlService, 
@@ -39,11 +36,11 @@ export class DynamicFormSchoolComponent {
 
   	// debug...
     //console.log(this.form.value);
-    console.log(this.form);
+    //console.log(this.form);
 
     let newEvent = new Event(this.form.value.title, this.type);
       
-     newEvent.classes = {
+     let classes = {
        math: this.form.value.class__math,
        hebrew: this.form.value.class__hebrew,
        geography: this.form.value.class__geography,
@@ -54,13 +51,15 @@ export class DynamicFormSchoolComponent {
        other: this.form.value.class__other,
      };
 
+
      // insert altInput as if it is yet another class option
      if (this.form.value.class__other__altInput != "") {
-       newEvent.classes[this.form.value.class__other__altInput] = true;
+       classes[this.form.value.class__other__altInput] = true;
      } 
 
+    newEvent.classesStr = this.printClasses(classes);
 
-    newEvent.gotHomework = this.form.value.gotHomework;
+    newEvent.gotHomework = this.qs.getKeyValue(this.form.value.gotHomework);
     
 
 
@@ -75,6 +74,34 @@ export class DynamicFormSchoolComponent {
     this.els.addEvent(newEvent);
 
   }
+
+
+
+
+  printClasses(classes: {}) {
+
+     let str: string = "";
+     let first: boolean = true;
+
+     for (var key in classes){
+        var attrName = key;
+        var attrValue = classes[key];
+        if (attrValue && (key != 'other')) {
+
+          if  (first) {
+            first = false;
+            str = this.qs.getKeyValue(key);
+          } else {
+            str = str + ", " + this.qs.getKeyValue(key);
+          }
+
+        }
+     }
+
+      return str;
+    }
+
+
 
 
   

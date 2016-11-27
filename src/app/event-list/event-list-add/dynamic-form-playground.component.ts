@@ -8,7 +8,6 @@ import { QuestionService } from './question.service';
 import { Event } from '../../shared';
 import { EventListService } from "../event-list.service";
 
-import * as moment from 'moment';
 
 @Component({
   // moduleId: module.id,
@@ -21,7 +20,6 @@ export class DynamicFormPlaygroundComponent {
   type: string = "Playground"
   form: FormGroup;
 
-  gdate: moment.Moment;
 
   
   constructor(private qs: QuestionService, private qcs: QuestionControlService, 
@@ -44,8 +42,8 @@ export class DynamicFormPlaygroundComponent {
     let newEvent = new Event(this.form.value.title, this.type);
       
     
-    newEvent.game = this.form.value.game;
-    newEvent.hadFun = this.form.value.hadFun;
+    newEvent.game = this.qs.getKeyValue(this.form.value.game);
+    newEvent.hadFun = this.qs.getKeyValue(this.form.value.hadFun);
     
 
 
