@@ -19,14 +19,29 @@
     </div>
   
 
-
   <!-- Textfield with MDL Floating Label -->
 
-  <div *ngSwitchCase="'textbox'"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
-    <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
-  </div>
+  <div *ngSwitchCase="'textbox'">
 
+    <div *ngIf="question.cond==''">
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
+        <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
+      </div>
+    </div>
+
+    <div *ngIf="question.cond!=''">
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" 
+          [hidden]="form.controls[question.cond].value">
+        <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
+        <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
+      </div>
+    </div>
+
+
+  </div>
 
 
 <!-- dropdown w/o MDL (select is not supported by MDL) -->

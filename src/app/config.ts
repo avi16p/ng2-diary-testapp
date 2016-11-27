@@ -26,7 +26,7 @@ export const firebaseConfig = {
 
 
 export const appDefaults = {
-	startType: 'School',
+	startType: 'Home',
 	numEntriesToDisplay: 5,
 };
 

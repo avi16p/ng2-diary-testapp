@@ -47,7 +47,6 @@ import { DynamicFormHomeComponent } from './event-list/event-list-add/dynamic-fo
 import { DynamicFormSchoolComponent } from './event-list/event-list-add/dynamic-form-school.component';
 import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dynamic-form-playground.component';
 
-//import {DatePickerModule} from 'ng2-datepicker';
 
 
 
@@ -88,7 +87,6 @@ import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dyna
     HttpModule,
 
     routing,
-    //DatePickerModule, 
    
 
 

@@ -8,6 +8,7 @@ import { QuestionService } from './question.service';
 import { Event } from '../../shared';
 import { EventListService } from "../event-list.service";
 
+import * as moment from 'moment';
 
 @Component({
   // moduleId: module.id,
@@ -19,6 +20,8 @@ export class DynamicFormSchoolComponent {
   questions: QuestionBase<any>[] = [];
   type: string = "School"
   form: FormGroup;
+
+  gdate: moment.Moment;
 
   
   constructor(private qs: QuestionService, private qcs: QuestionControlService, 
@@ -59,8 +62,14 @@ export class DynamicFormSchoolComponent {
 
     newEvent.gotHomework = this.form.value.gotHomework;
     
-    newEvent.date = new Date();
 
+
+    if (! this.form.value.currentTime) {
+      newEvent.date = new Date(this.form.value.date);
+    } else {
+      newEvent.date = new Date();  
+    }
+        
     //console.log("try:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);

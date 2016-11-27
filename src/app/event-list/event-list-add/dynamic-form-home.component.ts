@@ -41,11 +41,16 @@ export class DynamicFormHomeComponent {
     let newEvent = new Event(this.form.value.title, this.type);
       
     newEvent.homeActivity = this.form.value.homeActivity;
-    
-    
-    newEvent.date = new Date();
 
-    //console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
+
+    if (! this.form.value.currentTime) {
+      newEvent.date = new Date(this.form.value.date);
+    } else {
+      newEvent.date = new Date();  
+    }
+        
+
+    console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 

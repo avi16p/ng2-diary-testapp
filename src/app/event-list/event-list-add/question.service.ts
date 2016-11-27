@@ -171,12 +171,26 @@ export class QuestionService {
       });
 
 
+
+    let dateQ: TextboxQuestion = 
+      new TextboxQuestion({
+        key: 'date',
+        type: 'date',
+        label: 'Date',
+        value: '',
+        required: false,
+        cond: 'currentTime',     // enabled when currentTime is check  
+        order: 4
+      });
+
+
+
        
-  	if (type == 'Home') return [titleQ, timeQ, homeActivityQ];
+  	if (type == 'Home') return [titleQ, timeQ, dateQ, homeActivityQ];
 
-  	if (type == 'School') return [titleQ, timeQ, classQcheckBox, gotHomeworkQ];
+  	if (type == 'School') return [titleQ, timeQ, dateQ, classQcheckBox, gotHomeworkQ];
 
-  	if (type == 'Playground') return [titleQ, timeQ, gameQ ,hadFunQ2];
+  	if (type == 'Playground') return [titleQ, timeQ, dateQ, gameQ ,hadFunQ2];
 
     return []; 
 
