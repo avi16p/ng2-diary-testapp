@@ -1,61 +1,60 @@
 import { Injectable } from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
+
+import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable, FirebaseAuthState  } from 'angularfire2';
+
 
 import { authConfig } from "../config";
 
-// Avoid name not found warnings
-declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
 
-  // Configure Auth0
-  lock = new Auth0Lock(authConfig.clientID, authConfig.domain, {});
-
-  userProfile: Object;
+  loggedIn: boolean = false;
+  userName: string = "UNKNOWN";
   
-  constructor() {
-    
-    // Set userProfile attribute of already saved profile
-    this.userProfile = JSON.parse(localStorage.getItem('profile'));
-    console.log(this.userProfile);
-    
-    // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-      
-      // Fetch profile information
-      this.lock.getProfile(authResult.idToken, (error, profile) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
+  constructor(public af: AngularFire) {
 
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-      });
+
+    this.af.auth.subscribe((user: FirebaseAuthState) => {
+      if (user) {
+        //console.log("user=", user);
+
+         console.log("displayname=", user.auth.displayName);
+         this.loggedIn = true;
+         this.userName = user.auth.displayName;
+
+      } else {
+        this.loggedIn = false;
+      }
     });
-  
+
   
   }
 
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
-  };
+
+ login() {
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup,
+    });
+  }
+
+
+  logout() {
+     this.af.auth.logout();
+  }
+
+
+
+  public getUserName() {
+    console.log("getUserName=" + this.userName);
+    return this.userName;
+  } 
+
 
   public authenticated() {
-    // Check if there's an unexpired JWT
-    // This searches for an item in localStorage with key == 'id_token'
-    return tokenNotExpired();
-  };
+    return this.loggedIn;
+  } 
 
-  public logout() {
-    // Remove token from localStorage
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-  };
 
 }

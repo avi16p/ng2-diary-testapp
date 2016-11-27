@@ -1,8 +1,8 @@
 import { Injectable} from '@angular/core';
 import { Event, IEvent } from "../shared";
 
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
-
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable, FirebaseAuthState} from "angularfire2";
+import {AuthService} from "../auth/auth.service";
 
 import { appDefaults } from "../config";
 
@@ -11,14 +11,46 @@ import { appDefaults } from "../config";
 
   private currentType: string;
 
+  userName: string = "UNKNOWN";
 
   dbItems: FirebaseListObservable<IEvent[]>[] = [];
   dbItemsForDisplay: FirebaseListObservable<IEvent[]>[] = [];  // used for what we actually display
 
 
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, private authService: AuthService) {
   
+
+     this.currentType = appDefaults['startType'];
+
+
+
+     this.af.auth.subscribe((user: FirebaseAuthState) => {
+      if (user) {
+        //console.log("user=", user);
+
+         console.log("displayname2=", user.auth.displayName);
+         this.userName = user.auth.displayName;
+         this.initDbItems();
+
+      } else {
+        console.log("event-list-service: not login in...");
+      }
+    });
+
+
+     //this.initDbItems();
+
+
+
+
+
+  }
+
+
+
+  initDbItems() {
+
     this.getEventTypes().forEach(type => 
       { 
 
@@ -32,9 +64,6 @@ import { appDefaults } from "../config";
       }
       );
 
-     this.currentType = appDefaults['startType'];
-
-
   }
 
 
@@ -44,8 +73,9 @@ import { appDefaults } from "../config";
 
   getDbPath(type: string) {
 
-    let user = 'User1'  // TODO: use real usr d after adding auth
-    return (user + '/Events/' + type);
+    //let user = 'User1'  // TODO: use real usr d after adding auth
+    //let user = this.authService.getUserName();
+    return (this.userName + '/Events/' + type);
 
   }
 

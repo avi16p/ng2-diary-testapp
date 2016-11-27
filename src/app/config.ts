@@ -16,6 +16,12 @@ export const authConfig: AuthConfiguration = {
 
 export const firebaseConfig = {
 
+    apiKey: "AIzaSyCeH8BzWIshKUl5UxhZ9sq3VcAxMF6NjVQ",
+    authDomain: "mydiary-b1ed6.firebaseapp.com",
+    databaseURL: "https://mydiary-b1ed6.firebaseio.com",
+    storageBucket: "mydiary-b1ed6.appspot.com",
+    messagingSenderId: "778071471224"
+
 };
 
 
