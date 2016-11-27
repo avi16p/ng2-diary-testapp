@@ -16,13 +16,14 @@
     <a href="#Home" class="mdl-tabs__tab is-active"  (click)="onTypeSelected('Home')" >Home</a>
     <a href="#School" class="mdl-tabs__tab" (click)="onTypeSelected('School')">School</a>
     <a href="#Playground" class="mdl-tabs__tab" (click)="onTypeSelected('Playground')">Playground</a>
+    <a href="#All" class="mdl-tabs__tab" >All</a>
   </div>
 
 
   <div class="mdl-tabs__panel is-active" id="Home">
 
 		    
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
 		  <thead>
 		    <tr>
 		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
@@ -49,7 +50,7 @@
   <div class="mdl-tabs__panel" id="School">
     
  		    
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
 		  <thead>
 		    <tr>
 		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
@@ -72,13 +73,13 @@
 
 		</table>
 
- 
-
   </div>
+
+
   <div class="mdl-tabs__panel" id="Playground">
     
   		    
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
 		  <thead>
 		    <tr>
 		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
@@ -100,10 +101,74 @@
 		  </tbody>
 
 		</table>
-
- 
-
   </div>
+
+
+
+
+  <div class="mdl-tabs__panel" id="All">
+    
+  		    
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
+		      <th>Type</th>
+		      <th>Title</th>
+			  <th>Activity</th>
+		      <th>Classes</th>
+		      <th>Got Homework?</th>
+		      <th>Play</th>
+		      <th>Had fun?</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+
+
+		    <tr *ngFor="let event of els.dbItems['Home'] |  async">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
+		      <td> {{event.type}}</td>
+		      <td> {{event.title}} </td>
+		      <td> {{event.homeActivity}} </td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		    </tr>
+
+
+		    <tr *ngFor="let event of els.dbItems['School'] | async ">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
+		      <td> {{event.type}}</td>
+		      <td> {{event.title}} </td>
+		      <td></td>
+		      <td> {{event.classesStr}} </td>
+		      <td> {{event.gotHomework}} </td>
+		      <td></td>
+		      <td></td>
+		    </tr>
+
+		    <tr *ngFor="let event of els.dbItems['Playground'] | async">
+		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
+		      <td> {{event.type}}</td>
+		      <td> {{event.title}} </td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td> {{event.game}} </td>
+		      <td> {{event.hadFun}} </td>
+		    </tr>
+
+
+		  </tbody>
+
+		</table>
+  </div>
+
+
+
+
 </div>
 
 
