@@ -44,6 +44,8 @@ export class DftestComponent implements OnInit {
   ngOnInit() {
   }
 
+tabChanged(x) {}
+
 }
 
 

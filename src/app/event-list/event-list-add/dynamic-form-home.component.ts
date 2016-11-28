@@ -43,16 +43,26 @@ export class DynamicFormHomeComponent {
     newEvent.homeActivity =  this.qs.getKeyValue(this.form.value.homeActivity);
 
 
+
     if (! this.form.value.currentTime) {
+      if (this.form.value.date == "") {
+        alert("Please enter valid date");
+        return;
+      }
       newEvent.date = new Date(this.form.value.date);
     } else {
       newEvent.date = new Date();  
     }
         
 
+
     //console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
+
+    // refresh
+    this.form = this.qcs.toFormGroup(this.questions);
+
 
 
   }

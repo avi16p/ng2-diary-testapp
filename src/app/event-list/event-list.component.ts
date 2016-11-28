@@ -35,6 +35,7 @@ export class EventListComponent implements OnInit {
   }
 
 
+  tabChanged(x) {} // TODO
 
 
 

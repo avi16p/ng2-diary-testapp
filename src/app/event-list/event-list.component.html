@@ -9,18 +9,9 @@
 
 
 
-<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="align:center">
-  <div class="mdl-tabs__tab-bar">
 
-
-    <a href="#Home" class="mdl-tabs__tab is-active"  (click)="onTypeSelected('Home')" >Home</a>
-    <a href="#School" class="mdl-tabs__tab" (click)="onTypeSelected('School')">School</a>
-    <a href="#Playground" class="mdl-tabs__tab" (click)="onTypeSelected('Playground')">Playground</a>
-    <a href="#All" class="mdl-tabs__tab" >All</a>
-  </div>
-
-
-  <div class="mdl-tabs__panel is-active" id="Home">
+<mdl-tabs mdl-ripple mdl-tab-active-index="0" (mdl-tab-active-changed)="tabChanged($event)">
+    <mdl-tab-panel mdl-tab-panel-title="Home">
 
 		    
 		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
@@ -44,12 +35,12 @@
 
 		</table>
 
+
+  </mdl-tab-panel>
+  <mdl-tab-panel mdl-tab-panel-title="School">
  
-  </div>
-  
-  <div class="mdl-tabs__panel" id="School">
-    
- 		    
+
+
 		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
 		  <thead>
 		    <tr>
@@ -73,11 +64,10 @@
 
 		</table>
 
-  </div>
+  </mdl-tab-panel>
+  <mdl-tab-panel mdl-tab-panel-title="Playground">
+   
 
-
-  <div class="mdl-tabs__panel" id="Playground">
-    
   		    
 		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
 		  <thead>
@@ -101,13 +91,11 @@
 		  </tbody>
 
 		</table>
-  </div>
 
-
-
-
-  <div class="mdl-tabs__panel" id="All">
+  </mdl-tab-panel>
+  <mdl-tab-panel mdl-tab-panel-title="All">
     
+
   		    
 		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
 		  <thead>
@@ -164,15 +152,10 @@
 		  </tbody>
 
 		</table>
-  </div>
 
-
-
-
-</div>
-
-
-
+    
+  </mdl-tab-panel>
+</mdl-tabs>
 
 
 

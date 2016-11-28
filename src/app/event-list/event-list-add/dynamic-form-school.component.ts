@@ -63,15 +63,25 @@ export class DynamicFormSchoolComponent {
     
 
 
+
     if (! this.form.value.currentTime) {
+      if (this.form.value.date == "") {
+        alert("Please enter valid date");
+        return;
+      }
       newEvent.date = new Date(this.form.value.date);
     } else {
       newEvent.date = new Date();  
     }
         
+        
     //console.log("try:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
+
+    // refresh
+    this.form = this.qcs.toFormGroup(this.questions);
+
 
   }
 

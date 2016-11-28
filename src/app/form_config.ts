@@ -65,6 +65,23 @@ export const formConfig = {
 
   },
 
+
+  Dinner: {
+    type: 'Radio',
+    cfg: {
+        key: 'hadFun',
+        label: 'Had fun?',
+        value: 'yes', // checked key
+        options: [
+          {key: 'yes',  value: 'Yes', checked: true},
+          {key: 'kindOf',  value: 'Kind of', checked: false},
+          {key: 'no',   value: 'No', checked: false},
+        ],
+        order: 3
+      }
+  },
+  
+
   School: {
     classQcheckBox: {
       type: 'MultiCheckbox',
