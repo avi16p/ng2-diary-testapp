@@ -5,21 +5,9 @@
   
   <div [ngSwitch]="question.controlType">
 
-
-<!-- text ** You can chose between the flavots by editing the switch value; to work it should be textbox-->
-
-  
-   <!-- without MDL -->
-
-    <div *ngSwitchCase="'textbox--disabled'">
-        <label [attr.for]="question.key">
-          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-         <input [formControlName]="question.key"
-                [id]="question.key" [type]="question.type">
-    </div>
   
 
-  <!-- Textfield with MDL Floating Label -->
+  <!-- Textfield -->
 
   <div *ngSwitchCase="'textbox'">
 
