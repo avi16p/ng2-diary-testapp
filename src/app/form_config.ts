@@ -35,7 +35,7 @@ export const formConfig = {
         label: 'Date',
         value: '',
         required: false,
-        cond: 'currentTime',     // enabled when currentTime is check  
+        hideCond: 'currentTime',     // hidden when currentTime is checked  
         order: 4
       }
     },
@@ -70,11 +70,10 @@ export const formConfig = {
     type: 'Radio',
     cfg: {
         key: 'hadFun',
-        label: 'Had fun?',
+        label: 'Had dinner?',
         value: 'yes', // checked key
         options: [
           {key: 'yes',  value: 'Yes', checked: true},
-          {key: 'kindOf',  value: 'Kind of', checked: false},
           {key: 'no',   value: 'No', checked: false},
         ],
         order: 3

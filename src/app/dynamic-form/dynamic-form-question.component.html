@@ -23,25 +23,26 @@
 
   <div *ngSwitchCase="'textbox'">
 
-    <div *ngIf="question.cond==''">
 
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
-        <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
-      </div>
-    </div>
+        <div *ngIf="question.hideCond==''">
 
-    <div *ngIf="question.cond!=''">
+            <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
+                 [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
 
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" 
-          [hidden]="form.controls[question.cond].value">
-        <input class="mdl-textfield__input" [type]="question.type" [id]="question.key" [formControlName]="question.key">
-        <label class="mdl-textfield__label" for="question.key">{{question.label}}</label>
-      </div>
-    </div>
+        </div>
 
+        <div *ngIf="question.hideCond!=''">
+
+
+            <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
+                 [hidden]="form.controls[question.hideCond].value"
+                 [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
+
+        </div>
 
   </div>
+
+  
 
 
 <!-- dropdown w/o MDL (select is not supported by MDL) -->
@@ -77,7 +78,7 @@
 <div [id]="question.key" *ngSwitchCase="'checkbox'" >
     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="question.key" >
       <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-      <input type="checkbox" id="question.key" [formControlName]="question.key" class="mdl-checkbox__input">
+      <input type="checkbox" id="question.key" [formControlName]="question.key" (click)="checkBoxClicked()" class="mdl-checkbox__input">
       <span class="mdl-checkbox__label">{{question.text}}</span>
     </label>
 </div>

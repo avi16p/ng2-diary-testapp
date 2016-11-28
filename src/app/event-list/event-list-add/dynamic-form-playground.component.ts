@@ -71,5 +71,14 @@ export class DynamicFormPlaygroundComponent {
   }
 
 
+  formReady() {
+    // either user left currentTime checked or filled the date 
+    return (
+        this.form.controls['currentTime'].value || 
+        (this.form.controls['date'].value != "")
+        );
+
+  }
+
   
 }

@@ -1,13 +1,18 @@
 
 
+
 <div>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
     <div *ngFor="let question of questions" class="form-row">
       <df-question [question]="question" [form]="form"></df-question>
     </div>
     <div class="form-row" style="margin-top:10px" >
-      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [disabled]="!form.valid">Save</button>
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [disabled]="!form.valid || !formReady()">Save</button>
     </div>
   </form>
 </div>
 		
+
+
+

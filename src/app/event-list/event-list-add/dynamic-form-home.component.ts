@@ -20,7 +20,7 @@ export class DynamicFormHomeComponent {
   type: string = "Home"
   form: FormGroup;
 
-  
+
   constructor(private qs: QuestionService, private qcs: QuestionControlService, 
     private els: EventListService) { 
 
@@ -67,6 +67,14 @@ export class DynamicFormHomeComponent {
 
   }
 
+  formReady() {
+    // either user left currentTime checked or filled the date 
+    return (
+        this.form.controls['currentTime'].value || 
+        (this.form.controls['date'].value != "")
+        );
+
+  }
 
   
 }
