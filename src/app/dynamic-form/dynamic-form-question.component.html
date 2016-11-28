@@ -78,7 +78,7 @@
 <div [id]="question.key" *ngSwitchCase="'checkbox'" >
     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="question.key" >
       <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-      <input type="checkbox" id="question.key" [formControlName]="question.key" (click)="checkBoxClicked()" class="mdl-checkbox__input">
+      <input type="checkbox" id="question.key" [formControlName]="question.key" class="mdl-checkbox__input">
       <span class="mdl-checkbox__label">{{question.text}}</span>
     </label>
 </div>
