@@ -57,20 +57,14 @@
 
 <!-- radio -->
 
+
     <div [id]="question.key" *ngSwitchCase="'radio'">
-       <label [attr.for]="question.key">
-          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-      <label *ngFor="let opt of question.options" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-        <div *ngIf="opt.checked"> 
-          <input type="radio" id="opt.key" class="mdl-radio__button" [formControlName]="question.key" [value]="opt.key" checked> 
-          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
-        </div>
-        <div *ngIf="!opt.checked"> 
-          <input type="radio" id="opt.key" class="mdl-radio__button" [formControlName]="question.key" [value]="opt.key"> 
-          <span class="mdl-radio__label" style="margin-right:20px" >{{opt.value}}</span>
-        </div>
-      </label>
+        <label [attr.for]="question.key">
+            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+
+                 <mdl-radio *ngFor="let opt of question.options" [value]="opt.key" [formControlName]="question.key" mdl-ripple style="margin-left:15px" >{{opt.value}}</mdl-radio>
     </div>
+
 
 
 <!-- checkbox -->

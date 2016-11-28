@@ -141,9 +141,9 @@ export const formConfig = {
         label: 'Had fun?',
         value: 'yes', // checked key
         options: [
-          {key: 'yes',  value: 'Yes', checked: true},
-          {key: 'kindOf',  value: 'Kind of', checked: false},
-          {key: 'no',   value: 'No', checked: false},
+          {key: 'yes',  value: 'Yes'},
+          {key: 'kindOf',  value: 'Kind of'},
+          {key: 'no',   value: 'No'},
         ],
         order: 3
       }

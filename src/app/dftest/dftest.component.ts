@@ -11,17 +11,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DftestComponent implements OnInit {
 
 
-	myForm: FormGroup;
+	form: FormGroup;
 
 	constructor() {
 
-		this.myForm = new FormGroup(
+		this.form = new FormGroup(
 
 				{
-					radio1: new FormControl('1'),
-					checkbox1: new FormControl(true),
-					title: new FormControl(),
-					title2: new FormControl(),
+					firstName: new FormControl(),
+					lastName: new FormControl(),
+					breakfast: new FormControl(),
+					//title2: new FormControl(),
 					//username: new FormControl('Max', Validators.required), // def, validator
 					//email: new FormControl(),
 					//password: new FormControl(),
@@ -34,10 +34,10 @@ export class DftestComponent implements OnInit {
 	}    
 
 	onSubmit() {
-		console.log(this.myForm);
-		console.log(this.myForm.value);
-		console.log("TITLE=", this.myForm.value.title);
-		console.log("TITLE2=", this.myForm.value.title2);
+		console.log(this.form);
+		console.log(this.form.value);
+		//console.log("TITLE=", this.form.value.title);
+		//console.log("TITLE2=", this.form.value.title2);
 	}
 
 
