@@ -108,9 +108,11 @@
       <div *ngFor="let opt of question.options">
          <div *ngIf="opt.altInput" style="margin-left: 60px">
           
-             <input [hidden]="! form.controls[question.key + '__' + opt.key].value"
-               [formControlName]="question.key + '__' + opt.key + '__altInput'"
-                    [id]="question.key + '__' + opt.key + '__altInput'" >
+            <mdl-textfield [type]="text" [label]="opt.key" floating-label  
+                 [hidden]="! form.controls[question.key + '__' + opt.key].value"
+                 [id]="question.key + '__' + opt.key + '__altInput'"
+                 [formControlName]="question.key + '__' + opt.key + '__altInput'" >
+                  </mdl-textfield>
 
         </div>
     </div>
