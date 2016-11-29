@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { EventListService } from "./event-list.service";
-import { QuestionService } from './event-list-add/question.service';
+import { QuestionService } from '../dynamic-form/question.service';
 
 
 

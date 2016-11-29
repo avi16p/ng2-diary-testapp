@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup }                 from '@angular/forms';
 import { QuestionBase }              from '../../dynamic-form/question-base';
 import { QuestionControlService }    from '../../dynamic-form/question-control.service';
-import { QuestionService } from './question.service';
+import { QuestionService } from '../../dynamic-form/question.service';
 
 
 import { Event } from '../../shared';

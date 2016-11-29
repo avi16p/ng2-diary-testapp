@@ -40,7 +40,7 @@ import { EventListService } from "./event-list/event-list.service";
 import { EventListAddComponent } from './event-list/event-list-add/event-list-add.component';
 import { routing } from './app.routing';
 import { QuestionControlService } from "./dynamic-form/question-control.service";
-import { QuestionService } from "./event-list/event-list-add/question.service";
+import { QuestionService } from "./dynamic-form/question.service";
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
 import { DftestComponent } from './dftest/dftest.component';
 
