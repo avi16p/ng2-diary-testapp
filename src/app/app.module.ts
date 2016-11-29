@@ -43,6 +43,7 @@ import { QuestionControlService } from "./dynamic-form/question-control.service"
 import { QuestionService } from "./dynamic-form/question.service";
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
 import { DftestComponent } from './dftest/dftest.component';
+import { EventCardComponent } from './event-list/event-card/event-card.component';
 
 
 
@@ -64,6 +65,7 @@ import { DftestComponent } from './dftest/dftest.component';
     EventListAddComponent,
     DynamicFormQuestionComponent,
     DftestComponent,
+    EventCardComponent,
     
 
   ],

@@ -1,0 +1,42 @@
+
+<div class="demo-card-event mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title ">
+  	<span style="margin-right:20px"> {{date | date:"MM/dd/yy" }} </span> 
+    <h4>
+            
+            {{title}}  
+   </h4>
+    <hr>
+  </div>
+
+  <div>
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"  style="width:100%">
+		  
+		  <tbody>
+
+		    <tr *ngFor="let row of fieldsDataList">
+		      <td> {{row[0]}} </td>
+		      <td> {{row[1]}} </td>
+		    </tr>
+
+		  </tbody>
+
+		</table>
+
+  </div> 
+
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      See on Calendar
+    </a>
+    <div class="mdl-layout-spacer"></div>
+    <i class="material-icons">event</i>
+  </div>
+
+  <div class="mdl-card__menu">
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+      <i class="material-icons">share</i>
+    </button>
+  </div>
+
+</div>

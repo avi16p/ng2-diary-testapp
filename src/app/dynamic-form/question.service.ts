@@ -12,18 +12,6 @@ export class QuestionService {
 
   resData: {} = {};
 
-  keyValueMap = {};
-
-  // return the value of a question key to be displayed  (Radio, Checkbox, MultiCheckbox)
-  getKeyValue(key: string) {
-
-    if (this.keyValueMap[key]) {
-      return this.keyValueMap[key];
-    } else {
-      return key;
-    }
-
-  }
 
 
   getQuestion(q: {}) {
@@ -40,9 +28,7 @@ export class QuestionService {
 
       case 'Radio':
           newQ = new RadioQuestion(q['cfg']);
-          for (var opt in q['cfg']['options']) { 
-            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
-          }
+
         break; 
 
       case 'Checkbox':
@@ -51,16 +37,12 @@ export class QuestionService {
 
       case 'MultiCheckbox':
           newQ = new MultiCheckboxQuestion(q['cfg']);
-          for (var opt in q['cfg']['options']) { 
-            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['text']; 
-          }
+         
         break; 
 
       case 'Dropdown':
           newQ = new DropdownQuestion(q['cfg']);
-          for (var opt in q['cfg']['options']) { 
-            this.keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
-          }
+          
         break; 
 
     }
@@ -229,7 +211,7 @@ export class QuestionService {
 
     console.log('getFormAnswers ', type, formValue);
 
-    this.resData = {}; // clear
+    this.resData = {}; // clear global 
 
 
     // comon questions
