@@ -43,9 +43,6 @@ import { QuestionControlService } from "./dynamic-form/question-control.service"
 import { QuestionService } from "./event-list/event-list-add/question.service";
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
 import { DftestComponent } from './dftest/dftest.component';
-import { DynamicFormHomeComponent } from './event-list/event-list-add/dynamic-form-home.component';
-import { DynamicFormSchoolComponent } from './event-list/event-list-add/dynamic-form-school.component';
-import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dynamic-form-playground.component';
 
 
 
@@ -67,9 +64,7 @@ import { DynamicFormPlaygroundComponent } from './event-list/event-list-add/dyna
     EventListAddComponent,
     DynamicFormQuestionComponent,
     DftestComponent,
-    DynamicFormHomeComponent,
-    DynamicFormSchoolComponent,
-    DynamicFormPlaygroundComponent,
+    
 
   ],
   imports: [
