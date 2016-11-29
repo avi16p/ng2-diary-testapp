@@ -11,7 +11,9 @@ import { QuestionService } from '../dynamic-form/question.service';
 })
 export class EventListComponent implements OnInit {
   
+  eventTypes = []; 
 
+  tabTypes = [];
 
   type: string;
 
@@ -21,6 +23,10 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
    
+    this.eventTypes = this.qs.getTypes();
+
+    this.tabTypes = this.eventTypes.concat('All');
+
     this.type = this.els.getCurrentType();
    
   }

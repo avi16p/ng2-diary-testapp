@@ -20,7 +20,7 @@ export class EventListAddComponent implements OnInit {
 
   type: string = ''; 
  
-  eventTypes = ['Home', 'School', 'Playground'];
+  eventTypes = []; 
 
 
 		
@@ -30,6 +30,9 @@ export class EventListAddComponent implements OnInit {
    }
   
   ngOnInit() {
+
+
+    this.eventTypes = this.qs.getTypes();
 
     this.type = this.els.getCurrentType();
 

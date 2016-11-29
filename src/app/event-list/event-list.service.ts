@@ -4,7 +4,10 @@ import { Event, IEvent } from "../shared";
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable, FirebaseAuthState} from "angularfire2";
 import {AuthService} from "../auth/auth.service";
 
+import { QuestionService } from '../dynamic-form/question.service';
+
 import { appDefaults } from "../config";
+
 
 @Injectable() export class EventListService {
 
@@ -18,7 +21,7 @@ import { appDefaults } from "../config";
 
 
 
-  constructor(private af: AngularFire, private authService: AuthService) {
+  constructor(private qs: QuestionService, private af: AngularFire, private authService: AuthService) {
   
 
      this.currentType = appDefaults['startType'];
@@ -38,22 +41,14 @@ import { appDefaults } from "../config";
       }
     });
 
-
-     //this.initDbItems();
-
-
-
-
-
   }
 
 
 
   initDbItems() {
 
-    this.getEventTypes().forEach(type => 
+    this.qs.getTypes().forEach(type => 
       { 
-
         this.dbItems[type] = this.af.database.list(this.getDbPath(type)); 
 
         this.dbItemsForDisplay[type] = this.af.database.list(this.getDbPath(type), {query: {
@@ -63,19 +58,15 @@ import { appDefaults } from "../config";
 
       }
       );
-
   }
 
-
-  getEventTypes() {
-    return ['Home', 'School', 'Playground'];
-  }
 
   getDbPath(type: string) {
 
     return (this.userName + '/Events/' + type);
 
   }
+
 
 
   addEvent(event: Event) {

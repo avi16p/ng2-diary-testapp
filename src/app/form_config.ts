@@ -3,7 +3,7 @@
 
 export const formConfig = {
 	
-  All: {
+  Common: {
 
     titleQ: {
       type: 'Textbox',
@@ -67,17 +67,42 @@ export const formConfig = {
 
 
   Dinner: {
-    type: 'Radio',
-    cfg: {
-        key: 'hadFun',
-        label: 'Had dinner?',
+
+
+
+    homeActivityQ: { 
+       type: 'Dropdown',
+       cfg: { 
+            key: 'dinnerType',
+            label: 'Dinner type',
+            options: [
+              {key: 'pizza',  value: 'Pizza'},
+              {key: 'egg',  value: 'Eggs'},
+              {key: 'pasta',  value: 'Pasta'},
+              {key: 'other',  value: 'Other'},
+             
+            ],
+            order: 2
+          }
+        },
+
+
+    enjoyQ: {
+      type: 'Radio',
+      cfg: {
+        key: 'enjoy',
+        label: 'Enjoy your dinner?',
         value: 'yes', // checked key
         options: [
-          {key: 'yes',  value: 'Yes', checked: true},
-          {key: 'no',   value: 'No', checked: false},
+          {key: 'yes',  value: 'Yes'},
+          {key: 'kindOf',  value: 'Kind of'},
+          {key: 'no',   value: 'No'},
         ],
         order: 3
       }
+    },
+
+
   },
   
 

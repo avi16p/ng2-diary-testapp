@@ -8,7 +8,7 @@
 
 	<label for="type"  class="mdl-label"> Select type</label>
     <mdl-select class="form-control" [(ngModel)]="type" style="margin-left:10px" (change)="typeChanged()" >
-            <mdl-option *ngFor="let t of eventTypes" [value]="t" >{{t}}</mdl-option>
+         <mdl-option *ngFor="let t of eventTypes" [value]="t" >{{t}}</mdl-option>
     </mdl-select>
 
 
@@ -32,27 +32,6 @@
 	</div>
 	
 
-
-
-
-	<!-- <app-event-list-add-form   [type1]="type"  ></app-event-list-add-form> -->
-
-
-<!-- 
-
-	<div *ngIf="type=='Home'">
-		<dynamic-form-home></dynamic-form-home>
-	</div>
-
-	<div *ngIf="type=='School'">
-		<dynamic-form-school></dynamic-form-school>
-	</div>
-
-	<div *ngIf="type=='Playground'">
-		<dynamic-form-playground></dynamic-form-playground>
-	</div>
-
- -->
 
 </div>
 
