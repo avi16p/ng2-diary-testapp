@@ -22,8 +22,8 @@ export class EventListAddComponent implements OnInit {
     this.type = this.els.getCurrentType();
   }
 
-  typeChanged(type: string) {
-  	console.log('typeChanged to ' + type);
+  typeChanged() {
+  	console.log('typeChanged to ' + this.type);
     this.els.setCurrentType(this.type); // remember for next time
 
   }
