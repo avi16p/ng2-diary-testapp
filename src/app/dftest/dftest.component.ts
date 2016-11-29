@@ -10,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class DftestComponent implements OnInit {
 
+	people = ['p1', 'p2', 'p3'];
 
 	form: FormGroup;
 
@@ -21,6 +22,7 @@ export class DftestComponent implements OnInit {
 					firstName: new FormControl(),
 					lastName: new FormControl(),
 					breakfast: new FormControl(),
+					personId: new FormControl(),
 					//title2: new FormControl(),
 					//username: new FormControl('Max', Validators.required), // def, validator
 					//email: new FormControl(),

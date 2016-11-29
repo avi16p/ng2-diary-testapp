@@ -4,7 +4,9 @@ import { QuestionBase }     from './question-base';
 @Component({
   //Avi//moduleId: module.id,
   selector: 'df-question',
-  templateUrl: 'dynamic-form-question.component.html'
+  templateUrl: 'dynamic-form-question.component.html',
+  styleUrls: ['dynamic-form-question.component.css'],
+
 })
 export class DynamicFormQuestionComponent {
   @Input() question: QuestionBase<any>;

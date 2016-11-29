@@ -1,10 +1,7 @@
 <div [formGroup]="form">
-      <br>
-      <!-- <label [attr.for]="question.key">{{question.label}}</label> -->
-
+  <br>
       
-      <div [ngSwitch]="question.controlType">
-
+  <div [ngSwitch]="question.controlType">
       
 
     <!-- Textfield -->
@@ -23,24 +20,22 @@
 
       
 
-
     <!-- dropdown w/o MDL (select is not supported by MDL) -->
 
     <div *ngSwitchCase="'dropdown'">
-        <label [attr.for]="question.key">
-            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-        <select [id]="question.key" [formControlName]="question.key">
-            <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
-        </select>
+        <label [attr.for]="question.key"  class="mdl-label"> {{question.label}}</label>
+
+        <mdl-select [id]="question.key" [formControlName]="question.key" style="margin-left:10px" >
+            <mdl-option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</mdl-option>
+        </mdl-select>
+
     </div>
 
 
     <!-- radio -->
 
     <div [id]="question.key" *ngSwitchCase="'radio'">
-        <label [attr.for]="question.key">
-           <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-        </label>
+        <label [attr.for]="question.key"  class="mdl-label"> {{question.label}}</label>
         <mdl-radio *ngFor="let opt of question.options" [value]="opt.key" 
              [formControlName]="question.key" mdl-ripple style="margin-left:15px" >{{opt.value}}
         </mdl-radio>
@@ -51,9 +46,7 @@
     <!-- checkbox -->
 
     <div [id]="question.key" *ngSwitchCase="'checkbox'" >
-        <label [attr.for]="question.key">
-            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-        </label>
+        <label [attr.for]="question.key"  class="mdl-label"> {{question.label}}</label>
         <mdl-checkbox [mdl-ripple]="true" [id]="question.key" [formControlName]="question.key" >
             {{question.text}}
         </mdl-checkbox> 
@@ -64,9 +57,7 @@
     <!-- multiCheckbox -->
 
     <div [id]="question.key" *ngSwitchCase="'multiCheckbox'" > 
-        <label [attr.for]="question.key">
-                <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-        </label>
+        <label [attr.for]="question.key"  class="mdl-label"> {{question.label}}</label>
         <div style="margin-left: 20px">
             <div *ngFor="let opt of question.options" class="checkbox">
                 <mdl-checkbox [mdl-ripple]="true" [id]="opt.key" [formControlName]="question.key + '__' + opt.key" >
@@ -91,9 +82,9 @@
         </div>
     </div>
 
+  </div>
 
 </div>
-
 
 
 

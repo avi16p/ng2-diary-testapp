@@ -14,6 +14,15 @@
     <mdl-radio value="British" formControlName="breakfast" mdl-ripple>British</mdl-radio>
   </p>
   
+
+  <mdl-select formControlName="personId">
+    <mdl-option *ngFor="let p of people" [value]="p">{{p}}</mdl-option>
+  </mdl-select>
+
+
+    <!-- <mdl-option *ngFor="let p of people" [value]="p.id">{{p.name}}</mdl-option> -->
+
+
   </form>
 
 

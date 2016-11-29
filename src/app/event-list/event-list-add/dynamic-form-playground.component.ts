@@ -63,8 +63,8 @@ export class DynamicFormPlaygroundComponent {
     this.els.addEvent(newEvent);
 
 
-    // refresh
-    this.form = this.qcs.toFormGroup(this.questions);
+    // refresh the form - TODO
+
 
 
 

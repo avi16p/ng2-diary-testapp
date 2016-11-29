@@ -1,0 +1,14 @@
+
+.mdl-label {
+
+	font-size: 120%;
+	font-weight: bold;
+	margin-right: 15px;
+
+}
+
+
+.mdl-radio, .mdl-checkbox, .mdl-switch {
+  display: inline;
+}
+

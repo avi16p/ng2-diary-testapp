@@ -36,12 +36,11 @@ export class DynamicFormHomeComponent {
 
   	// debug...
     //console.log("form.value=", this.form.value);
-    //console.log(this.form);
+    console.log(this.form); 
 
     let newEvent = new Event(this.form.value.title, this.type);
       
     newEvent.homeActivity =  this.qs.getKeyValue(this.form.value.homeActivity);
-
 
 
     if (! this.form.value.currentTime) {
@@ -55,14 +54,11 @@ export class DynamicFormHomeComponent {
     }
         
 
-
     //console.log("Debug: event we are about to add:" + JSON.stringify(newEvent)); // debug
 
     this.els.addEvent(newEvent);
 
-    // refresh
-    this.form = this.qcs.toFormGroup(this.questions);
-
+    // refresh the form - TODO
 
 
   }
