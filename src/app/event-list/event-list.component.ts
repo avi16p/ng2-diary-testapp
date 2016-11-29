@@ -43,6 +43,9 @@ export class EventListComponent implements OnInit {
 
   tabChanged(x) {} // TODO
 
+  printEventInfo(event) {
+    return JSON.stringify(event);
+  }
 
 
 

@@ -20,6 +20,10 @@ import { appDefaults } from "../config";
   dbItemsForDisplay: FirebaseListObservable<IEvent[]>[] = [];  // used for what we actually display
 
 
+  dbItems2: FirebaseListObservable<any[]>;
+  dbItemsForDisplay2: FirebaseListObservable<any[]>[] = [];  // used for what we actually display
+
+
 
   constructor(private qs: QuestionService, private af: AngularFire, private authService: AuthService) {
   
@@ -50,9 +54,21 @@ import { appDefaults } from "../config";
     this.qs.getTypes().forEach(type => 
       { 
         this.dbItems[type] = this.af.database.list(this.getDbPath(type)); 
+        this.dbItems2 = this.af.database.list(this.getDbPath2(type)); 
 
         this.dbItemsForDisplay[type] = this.af.database.list(this.getDbPath(type), {query: {
               orderByChild: 'key',
+              limitToLast: appDefaults['numEntriesToDisplay'],
+          }} );
+
+
+        this.dbItemsForDisplay2[type] = this.af.database.list(this.getDbPath2(type), {query: {
+              orderByChild: 'type',
+              equalTo: type,
+              limitToLast: appDefaults['numEntriesToDisplay'],
+          }} );
+
+        this.dbItemsForDisplay2['All'] = this.af.database.list(this.getDbPath2(type), {query: {
               limitToLast: appDefaults['numEntriesToDisplay'],
           }} );
 
@@ -67,6 +83,12 @@ import { appDefaults } from "../config";
 
   }
 
+  getDbPath2(type: string) {
+
+    return (this.userName + '/DiaryEvents');
+
+  }
+
 
 
   addEvent(event: Event) {
@@ -74,6 +96,14 @@ import { appDefaults } from "../config";
     event.dateStr = event.date.toString();
 
     this.dbItems[event.type].push(event);
+
+  }
+
+
+  addEvent2(event: {}) {
+
+    this.dbItems2.push(event);
+
 
   }
 

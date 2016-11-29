@@ -10,6 +10,7 @@ import { formConfig } from '../form_config';
 @Injectable()
 export class QuestionService {
 
+  resData: {} = {};
 
   keyValueMap = {};
 
@@ -108,6 +109,150 @@ export class QuestionService {
     return res;
 
   }
+
+
+//================= form answers... ===================================
+
+
+
+
+
+  getFormAnswer(q: {}, formValue: {}) {
+
+    //console.log("q=", JSON.stringify(q));  
+
+    let cfg;
+    let keyValueMap = {};
+
+    switch (q['type']) {
+
+      case 'Textbox':
+          cfg = q['cfg'];
+          this.resData[cfg['key']] = {
+              qType: 'Textbox',
+              label: cfg['label'],
+              value: formValue[cfg['key']] || "",
+            }
+          
+        break;
+
+      case 'Radio':
+          cfg = q['cfg'];
+
+          for (var opt in q['cfg']['options']) { 
+            keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
+          }
+          this.resData[cfg['key']] = {
+              qType: 'Radio',
+              label: cfg['label'],
+              value: keyValueMap[formValue[cfg['key']]],
+            }
+
+        break; 
+
+      case 'Checkbox':
+          cfg = q['cfg'];
+          this.resData[cfg['key']] = {
+              qType: 'Checkbox',
+              label: cfg['label'],
+              text: cfg['text'],
+              value: formValue[cfg['key']],
+            }
+
+        break; 
+
+      case 'MultiCheckbox':
+          cfg = q['cfg'];
+          
+
+          // build prity value
+          let str = '';
+          let first = true;
+          for (var opt in q['cfg']['options']) { 
+
+            if (formValue[cfg['key'] + '__' + cfg['options'][opt]['key']]) {
+
+              let newItem = cfg['options'][opt]['text'];
+
+              // special case of altInput
+              if (cfg['options'][opt]['altInput']) {
+                let name = cfg['key'] + '__' + cfg['options'][opt]['key'] + '__altInput';
+                if (formValue[name]) { // might be null
+                  newItem = newItem + ": " + formValue[name];
+                }         
+              }
+
+              if (first) {
+                first = false;
+                str = newItem;
+              } else {
+                str = str + ", " + newItem;
+              }
+            }
+          }
+
+          this.resData[cfg['key']] = {
+              qType: 'MultiCheckbox',
+              label: cfg['label'],
+              value: str,
+          }
+
+        break; 
+
+      case 'Dropdown':
+          cfg = q['cfg'];
+
+          for (var opt in q['cfg']['options']) { 
+            keyValueMap[q['cfg']['options'][opt]['key']] = q['cfg']['options'][opt]['value']; 
+          }
+
+          this.resData[cfg['key']] = {
+              qType: 'Dropdown',
+              label: cfg['label'],
+              value: keyValueMap[formValue[cfg['key']]] || '',
+          }
+
+        break; 
+
+    }    
+  }
+
+
+
+
+
+  // build json with formapped ansers per question
+  // result is: {
+  //           
+  //             }
+  getFormAnswers(type: string, formValue: {}) {
+
+    console.log('getFormAnswers ', type, formValue);
+
+    this.resData = {}; // clear
+
+
+    // comon questions
+    let common: {} = formConfig['Common'];
+
+    for (var q in common){
+        this.getFormAnswer(common[q], formValue);
+    }
+
+    // type specific questions
+    let specific: {} = formConfig[type];
+
+    for (var q in specific){
+        this.getFormAnswer(specific[q], formValue);
+    }
+
+    return this.resData;
+
+  }
+
+
+
+
 
 
 }

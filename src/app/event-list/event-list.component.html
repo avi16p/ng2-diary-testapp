@@ -19,15 +19,19 @@
 		  <thead>
 		    <tr>
 		      <th class="mdl-data-table__cell--non-numeric">Time</th> 
+		      <th>Type</th>
 		      <th>Title</th>
+		      <th>Info</th>
 		    </tr>
 		  </thead>
 
 		  <tbody>
 
-		    <tr *ngFor="let event of els.dbItemsForDisplay[t] |  async">
+		    <tr *ngFor="let event of els.dbItemsForDisplay2[t] |  async">
 		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
-		      <td> {{event.title}} </td>
+		      <td> {{event.type}} </td>
+		      <td> {{event.title.value}} </td>
+		      <td> {{printEventInfo(event)}} </td>
 		    </tr>
 
 		  </tbody>

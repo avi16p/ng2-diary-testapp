@@ -62,7 +62,7 @@ export class EventListAddComponent implements OnInit {
     //console.log('at EventListAddFormComponent: onSubmit; type=', this.type);
 
     // debug...
-    //console.log("form.value=", this.form.value);
+    console.log("form.value=", this.form.value);
     //console.log(this.form); 
 
     let newEvent = new Event(this.form.value.title, this.type);
@@ -128,7 +128,75 @@ export class EventListAddComponent implements OnInit {
 
     this.els.addEvent(newEvent);
 
-    // refresh the form (so use won't re-submit) - TODO
+
+    // NEW METHOD
+
+
+    // 
+    let eventData = this.qs.getFormAnswers(this.type, this.form.value);
+
+    console.log('eventData=', eventData);
+
+    eventData['type'] = this.type;
+
+    let date: Date;
+    if (! this.form.value.currentTime) {
+      date = new Date(this.form.value.date);
+    } else {
+      date = new Date();  
+    }
+
+    eventData['dateStr'] = date.toString();  // we override the Date type with string
+
+    this.els.addEvent2(eventData);
+
+/*
+    // collect form data and fill info to be saved in DB
+
+    // first keep all the form data as is...
+    
+    let eventData = this.form.value;
+    
+    eventData['type'] = this.type;
+
+    // add special info (like format)
+
+
+
+    // 
+    this.qs.getFormAnswers(this.type, this.form.value);
+
+
+    // handle date
+
+    let date: Date;
+
+    if (! this.form.value.currentTime) {
+      if (this.form.value.date == "") {
+        alert("Please enter valid date");
+        return;
+      }
+      date = new Date(this.form.value.date);
+    } else {
+      date = new Date();  
+    }
+
+    eventData['date'] = date.toString();  // we override the Date type with string
+
+
+
+    // add any type specific info (try to reduce to minimum) 
+
+
+
+
+
+
+    //this.els.addEvent2(eventData);
+*/
+
+
+    // TODO: refresh the form (so use won't re-submit) 
 
 
   }
