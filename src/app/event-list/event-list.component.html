@@ -27,7 +27,7 @@
 
 		  <tbody>
 
-		    <tr *ngFor="let event of els.dbItemsForDisplay2[t] |  async">
+		    <tr *ngFor="let event of els.dbItemsForDisplay[t] |  async">
 		      <td class="mdl-data-table__cell--non-numeric">{{event.dateStr | date:"MM/dd/yy HH:mm"}}</td>
 		      <td> {{event.type}} </td>
 		      <td> {{event.title.value}} </td>
