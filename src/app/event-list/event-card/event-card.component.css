@@ -1,7 +1,9 @@
 .demo-card-event.mdl-card {
   width: 400px;
-  height: 300px;
+  height: auto;
   background: #3E4EB8;
+  float: left;
+  margin: 10px;
 }
 .demo-card-event > .mdl-card__actions {
   border-color: rgba(255, 255, 255, 0.2);
@@ -29,3 +31,4 @@
 .mdl-data-table {
 	background-color: #8f8;
 }
+
