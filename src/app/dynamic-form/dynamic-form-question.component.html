@@ -1,107 +1,95 @@
 <div [formGroup]="form">
-  <br>
-  <!-- <label [attr.for]="question.key">{{question.label}}</label> -->
+      <br>
+      <!-- <label [attr.for]="question.key">{{question.label}}</label> -->
 
-  
-  <div [ngSwitch]="question.controlType">
+      
+      <div [ngSwitch]="question.controlType">
 
-  
+      
 
-  <!-- Textfield -->
+    <!-- Textfield -->
 
-  <div *ngSwitchCase="'textbox'">
+    <div *ngSwitchCase="'textbox'">
+          <div *ngIf="question.hideCond==''">
+              <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
+                   [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
+          </div>
+          <div *ngIf="question.hideCond!=''">
+              <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
+                   [hidden]="form.controls[question.hideCond].value"
+                   [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
+          </div>
+    </div>
 
-
-        <div *ngIf="question.hideCond==''">
-
-            <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
-                 [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
-
-        </div>
-
-        <div *ngIf="question.hideCond!=''">
-
-
-            <mdl-textfield [type]="question.type" [label]="question.label" floating-label  
-                 [hidden]="form.controls[question.hideCond].value"
-                 [id]="question.key" [formControlName]="question.key" ></mdl-textfield>
-
-        </div>
-
-  </div>
-
-  
+      
 
 
-<!-- dropdown w/o MDL (select is not supported by MDL) -->
+    <!-- dropdown w/o MDL (select is not supported by MDL) -->
+
     <div *ngSwitchCase="'dropdown'">
-      <label [attr.for]="question.key">
-          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-      <select [id]="question.key" [formControlName]="question.key">
-        <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
-      </select>
+        <label [attr.for]="question.key">
+            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
+        <select [id]="question.key" [formControlName]="question.key">
+            <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+        </select>
     </div>
 
 
-<!-- radio -->
-
+    <!-- radio -->
 
     <div [id]="question.key" *ngSwitchCase="'radio'">
         <label [attr.for]="question.key">
-            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-
-                 <mdl-radio *ngFor="let opt of question.options" [value]="opt.key" [formControlName]="question.key" mdl-ripple style="margin-left:15px" >{{opt.value}}</mdl-radio>
+           <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
+        </label>
+        <mdl-radio *ngFor="let opt of question.options" [value]="opt.key" 
+             [formControlName]="question.key" mdl-ripple style="margin-left:15px" >{{opt.value}}
+        </mdl-radio>
     </div>
 
 
 
-<!-- checkbox -->
+    <!-- checkbox -->
 
-<div [id]="question.key" *ngSwitchCase="'checkbox'" >
-    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="question.key" >
-      <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
-      <input type="checkbox" id="question.key" [formControlName]="question.key" class="mdl-checkbox__input">
-      <span class="mdl-checkbox__label">{{question.text}}</span>
-    </label>
-</div>
-
-
-<!-- multiCheckbox -->
-
-<div [id]="question.key" *ngSwitchCase="'multiCheckbox'" > 
-  <label [attr.for]="question.key">
-          <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span></label>
-    <div style="margin-left: 20px">
-      <div *ngFor="let opt of question.options" class="checkbox">
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-              <input [id]="opt.key" type="checkbox" [value]="opt.value" [formControlName]="question.key + '__' + opt.key"
-              class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">{{opt.text}}</span>
-              <span class="custom-control-indicator"></span>
-          </label>
-      </div>
+    <div [id]="question.key" *ngSwitchCase="'checkbox'" >
+        <label [attr.for]="question.key">
+            <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
+        </label>
+        <mdl-checkbox [mdl-ripple]="true" [id]="question.key" [formControlName]="question.key" >
+            {{question.text}}
+        </mdl-checkbox> 
     </div>
-</div>
 
 
-<!-- Other of multiCheckbox -->
 
-<div  *ngSwitchCase="'multiCheckbox'" > 
-      <div *ngFor="let opt of question.options">
-         <div *ngIf="opt.altInput" style="margin-left: 60px">
-          
-            <mdl-textfield [type]="text" [label]="opt.key" floating-label  
-                 [hidden]="! form.controls[question.key + '__' + opt.key].value"
-                 [id]="question.key + '__' + opt.key + '__altInput'"
-                 [formControlName]="question.key + '__' + opt.key + '__altInput'" >
-                  </mdl-textfield>
+    <!-- multiCheckbox -->
 
+    <div [id]="question.key" *ngSwitchCase="'multiCheckbox'" > 
+        <label [attr.for]="question.key">
+                <span class="mdl-label" style="font-weight: bold" >{{question.label}}</span>
+        </label>
+        <div style="margin-left: 20px">
+            <div *ngFor="let opt of question.options" class="checkbox">
+                <mdl-checkbox [mdl-ripple]="true" [id]="opt.key" [formControlName]="question.key + '__' + opt.key" >
+                    {{opt.text}}
+                </mdl-checkbox> 
+            </div>
         </div>
     </div>
-</div>
 
 
+    <!-- Other of multiCheckbox -->
 
+    <div  *ngSwitchCase="'multiCheckbox'" > 
+          <div *ngFor="let opt of question.options">
+             <div *ngIf="opt.altInput" style="margin-left: 60px">
+                <mdl-textfield [type]="text" [label]="opt.text" floating-label  
+                     [hidden]="! form.controls[question.key + '__' + opt.key].value"
+                     [id]="question.key + '__' + opt.key + '__altInput'"
+                     [formControlName]="question.key + '__' + opt.key + '__altInput'" >
+                </mdl-textfield>
+            </div>
+        </div>
+    </div>
 
 
 </div>
