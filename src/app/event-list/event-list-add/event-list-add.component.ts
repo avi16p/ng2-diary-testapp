@@ -86,7 +86,7 @@ export class EventListAddComponent implements OnInit {
 
 
     // TODO: refresh the form (so use won't re-submit) 
-
+     
 
   }
 

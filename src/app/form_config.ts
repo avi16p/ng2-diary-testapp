@@ -63,17 +63,31 @@ export const formConfig = {
           }
         },
 
+    hadFunQ: {
+      type: 'Radio',
+      cfg: {
+        key: 'hadFun',
+        label: 'Had fun?',
+        value: 'yes', // checked key
+        options: [
+          {key: 'yes',  value: 'Yes'},
+          {key: 'kindOf',  value: 'Kind of'},
+          {key: 'no',   value: 'No'},
+        ],
+        order: 3
+      }
+    },
+
   },
 
 
-  
+
 
 
   Dinner: {
 
 
-
-    homeActivityQ: { 
+    dinnerTypeQ: { 
        type: 'Dropdown',
        cfg: { 
             key: 'dinnerType',
@@ -100,6 +114,34 @@ export const formConfig = {
           {key: 'yes',  value: 'Yes'},
           {key: 'kindOf',  value: 'Kind of'},
           {key: 'no',   value: 'No'},
+        ],
+        order: 3
+      }
+    },
+
+
+    restaurantQ: {
+      type: 'Textbox',
+      cfg: {
+        key: 'restaurant',
+        label: 'Restaurant name',
+        value: '',
+        required: false,  
+        order: 1
+      }
+    },
+
+    recommandQ: {
+      type: 'Radio',
+      cfg: {
+        key: 'recommand',
+        label: 'Recommand this place?',
+        value: 'yes', // checked key
+        options: [
+          {key: 'yes',  value: 'Yes'},
+          {key: 'notRealy',  value: 'Not realy'},
+          {key: 'no',   value: 'No'},
+          {key: 'na',   value: 'N/A'},
         ],
         order: 3
       }
@@ -147,6 +189,21 @@ export const formConfig = {
   },
 
   Playground: {
+
+
+
+    whereQ: {
+      type: 'Textbox',
+      cfg: {
+        key: 'where',
+        label: 'Where?',
+        value: '',
+        required: false,  
+        order: 2
+      }
+    },
+
+
     gameQ: {
       type: 'Dropdown',
       cfg: {

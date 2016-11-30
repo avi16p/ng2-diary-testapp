@@ -44,7 +44,9 @@ export class EventCardComponent implements OnInit {
   			case "Dropdown":
   			case "MultiCheckbox":
 
-  				if (info['label'] == 'Title') continue;
+          if (info['value'] == '') continue;
+
+          if (info['label'] == 'Title') continue;
   				if (info['label'] == 'Date') continue;
   				
   				this.fieldsDataList.push([info['label'], info['value']]);

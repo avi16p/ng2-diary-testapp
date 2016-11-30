@@ -27,7 +27,8 @@ export const firebaseConfig = {
 
 export const appDefaults = {
 	startType: 'Home',
-	numEntriesToDisplay: 50,
+	numEntriesToDisplay: 5,   
+  demoMode: false,           // use demo DB path (temporal option for) 
 };
 
 
