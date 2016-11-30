@@ -1,8 +1,8 @@
 
 # Avi dev status: 
-This version is first "integration" of my components that were developed on top of the seed (w/o MDL branch)
-into the seed with MDL branch.
-This version is not ready by any means !
+
+
+App ready for playing with. Enjoy
 
 
 
