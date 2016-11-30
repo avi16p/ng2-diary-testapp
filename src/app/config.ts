@@ -27,7 +27,7 @@ export const firebaseConfig = {
 
 export const appDefaults = {
 	startType: 'Home',
-	numEntriesToDisplay: 5,
+	numEntriesToDisplay: 50,
 };
 
 

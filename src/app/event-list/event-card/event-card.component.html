@@ -1,9 +1,9 @@
 
-<div class="demo-card-event mdl-card mdl-shadow--2dp">
+
+<div id="card1" [className]="myClass"  >
   <div class="mdl-card__title ">
   	<span style="margin-right:20px"> {{date | date:"MM/dd/yy" }} </span> 
     <h4>
-            
             {{title}}  
    </h4>
     <hr>
@@ -15,8 +15,8 @@
 		  <tbody>
 
 		    <tr *ngFor="let row of fieldsDataList">
-		      <td> {{row[0]}} </td>
-		      <td> {{row[1]}} </td>
+		      <td> {{row[0]}}: </td>
+		      <td style="font-weight:bold"> {{row[1]}} </td>
 		    </tr>
 
 		  </tbody>
@@ -27,7 +27,7 @@
 
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      See on Calendar
+      At {{type}}
     </a>
     <div class="mdl-layout-spacer"></div>
     <i class="material-icons">event</i>

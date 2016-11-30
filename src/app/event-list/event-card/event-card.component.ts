@@ -14,9 +14,13 @@ export class EventCardComponent implements OnInit {
 	title: string = "";
 	date: string = "";
 
+	myClass: string = 'demo-card-event mdl-card mdl-shadow--2dp';
+
   	fieldsDataList = [];
 
-  constructor() { }
+  constructor() { 
+
+  }
 
   ngOnInit() {
 
@@ -26,6 +30,9 @@ export class EventCardComponent implements OnInit {
   	this.date = this.data['dateStr'];
   	this.title = this.data['title']['value'];
   	this.eventInfo = JSON.stringify(this.data);
+
+
+  	this.myClass += ' ' + this.type + '-card';
 
   	// traverse the data and fill info based on types
   	for (var q in this.data) {

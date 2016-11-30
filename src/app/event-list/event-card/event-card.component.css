@@ -1,7 +1,26 @@
+
+
+.Home-card {
+    background: url('../../../images/Home.png')   #46B6AC;
+}
+
+.School-card {
+    background: url('../../../images/School.png')   #46B6AC;
+}
+
+.Playground-card {
+    background: url('../../../images/Playground.png')   #46B6AC;
+}
+
+.Dinner-card {
+    background: url('../../../images/Dinner.png')   #46B6AC;
+}
+
 .demo-card-event.mdl-card {
   width: 400px;
   height: auto;
-  background: #3E4EB8;
+  //background: #3E4EB8;
+  //background: url('../../../images/{{type}}.png')   #46B6AC;
   float: left;
   margin: 10px;
 }
